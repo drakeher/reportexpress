@@ -7,6 +7,10 @@ a logical structure that allows you to create any type of report.
 ReportExpress lets you creatively focus on your report, minimizing the amount 
 of code required to accomplish desired.
 
+Release Information
+===================
+This repo contains in development code for future releases.
+
 License
 =======
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
