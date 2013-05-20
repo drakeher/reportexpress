@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report10" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68880f36-998a-47c8-a326-981dc88d385b">
+	<property name="ireport.zoom" value="0.7513148009015777"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from meses]]>
+	</queryString>
+	<field name="anno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="febrero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="marzo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abril" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="8" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="8" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement uuid="9dd988fe-c0cf-4c5c-a4c7-91667e42b57c" x="0" y="172" width="261" height="144"/>
+					<chartTitle color="#006633">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ejemplo BarChart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot foregroundAlpha="0.8"/>
+					<itemLabel/>
+				</barPlot>
+			</barChart>
+			<lineChart>
+				<chart>
+					<reportElement uuid="37e24315-7283-469c-8f2c-0e65a64e0079" x="286" y="172" width="269" height="144"/>
+					<chartTitle color="#006666">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ejemplo LineChart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+				</linePlot>
+			</lineChart>
+			<lineChart>
+				<chart>
+					<reportElement uuid="ac7854fe-5d9e-49c3-b4a2-888ea83b770e" x="0" y="340" width="261" height="144"/>
+					<chartTitle color="#000066">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ejemplo LineChart -No Points-"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+				</linePlot>
+			</lineChart>
+			<lineChart>
+				<chart>
+					<reportElement uuid="6aedc968-84a5-446e-b1d4-d494a4fff511" x="286" y="340" width="269" height="144"/>
+					<chartTitle color="#336600">
+						<titleExpression><![CDATA["Ejemplo LineChart -No Lines-"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot isShowLines="false">
+					<plot/>
+				</linePlot>
+			</lineChart>
+			<areaChart>
+				<chart>
+					<reportElement uuid="5da91833-e091-4086-bf02-8d422033b451" x="0" y="503" width="261" height="145"/>
+					<chartTitle position="Top" color="#FF3333">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ejemplo AreaChart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Abril"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{abril}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot foregroundAlpha="1.0"/>
+				</areaPlot>
+			</areaChart>
+			<stackedBarChart>
+				<chart>
+					<reportElement uuid="7b8c2f93-cd27-48a0-a209-b0024d10e50c" x="286" y="503" width="269" height="145"/>
+					<chartTitle color="#990099">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ejemplo StakedBarChart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Abril"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{abril}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot foregroundAlpha="0.9"/>
+					<itemLabel/>
+				</barPlot>
+			</stackedBarChart>
+			<pieChart>
+				<chart>
+					<reportElement uuid="d4ee765f-9ffc-4cc2-b629-1d902407435d" x="0" y="0" width="261" height="172"/>
+					<chartTitle color="#333300">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ej. Pie Chart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{anno}]]></keyExpression>
+					<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+					<labelExpression><![CDATA[$F{anno}+" valor "+$F{febrero}]]></labelExpression>
+				</pieDataset>
+				<piePlot isCircular="true">
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pie3DChart>
+				<chart>
+					<reportElement uuid="cb54ba82-a0b8-4645-8294-8f94bf3e2dbe" x="286" y="0" width="269" height="172"/>
+					<chartTitle color="#333300">
+						<font size="12"/>
+						<titleExpression><![CDATA["Ej. Pie 3D Chart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{anno}]]></keyExpression>
+					<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

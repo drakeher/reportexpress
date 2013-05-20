@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report7" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20cbbf61-0df0-4028-ae2d-497c7680fa87">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from meses]]>
+	</queryString>
+	<field name="anno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="febrero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="marzo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abril" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="3" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="415" splitType="Stretch">
+			<scatterChart>
+				<chart>
+					<reportElement uuid="c022f16a-15e6-4d60-8fae-2d277232c059" x="11" y="42" width="544" height="266"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{anno}]]></xValueExpression>
+						<yValueExpression><![CDATA[$F{enero}]]></yValueExpression>
+						<labelExpression><![CDATA["Enero"]]></labelExpression>
+					</xySeries>
+					<xySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{anno}]]></xValueExpression>
+						<yValueExpression><![CDATA[$F{febrero}]]></yValueExpression>
+						<labelExpression><![CDATA["Febrero"]]></labelExpression>
+					</xySeries>
+				</xyDataset>
+				<scatterPlot isShowLines="true" isShowShapes="true">
+					<plot/>
+				</scatterPlot>
+			</scatterChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14af33ad-7ef7-4d2e-a72f-cf5ea9b75488">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from meses]]>
+	</queryString>
+	<field name="enero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="febrero" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="marzo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abril" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="annno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="15" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="14" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="331" splitType="Stretch">
+			<areaChart>
+				<chart theme="aegean">
+					<reportElement uuid="eddcd8f9-c27e-4c7c-8cbd-bc04b48dbe47" x="11" y="28" width="479" height="166"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Enero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{enero}]]></valueExpression>
+						<labelExpression><![CDATA["Enero LE"]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Febrero"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{febrero}]]></valueExpression>
+						<labelExpression><![CDATA["Febrero LE"]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Marzo"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{marzo}]]></valueExpression>
+						<labelExpression><![CDATA["Marzo LE"]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Abril"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{anno}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{abril}]]></valueExpression>
+						<labelExpression><![CDATA["Abril LE"]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+				</areaPlot>
+			</areaChart>
+		</band>
+	</summary>
+</jasperReport>

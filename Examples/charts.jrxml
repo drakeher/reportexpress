@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="charts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8b06a1b-dd1f-4ea1-a749-9c4edaffa566">
+	<property name="ireport.callouts" value="##Mon Mar 04 09:02:20 EST 2013\ncallouts.1.text=Use the Sample Database (HSQLDB test) datasource to run this report.\nTo run the database, select Help &gt; Samples &gt; Run Sample Database.\ncallouts.1.bounds=812,53,235,90"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="344"/>
+	<subDataset name="dataset1" uuid="24f65376-303a-420a-8e99-4342eb29091f">
+		<queryString>
+			<![CDATA[select count(freight) tot, YEAR(orderdate) year from orders group by YEAR(orderdate)]]>
+		</queryString>
+		<field name="TOT" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="YEAR" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset2" uuid="2ed99657-6d54-49ed-87aa-5bc17beab116">
+		<queryString>
+			<![CDATA[select count(*) tot, orderdate from orders group by orderdate]]>
+		</queryString>
+		<field name="TOT" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ORDERDATE" class="java.sql.Timestamp">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[select sum(freight)/100 freight, count(*) c, shipcountry from  orders group by shipcountry order by c desc]]>
+	</queryString>
+	<field name="FREIGHT" class="java.math.BigDecimal"/>
+	<field name="C" class="java.lang.Integer"/>
+	<field name="SHIPCOUNTRY" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<pie3DChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="3b893e7e-823f-454f-b475-a2218b6a8d68" x="0" y="0" width="291" height="175"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Pie 3D"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset maxCount="3">
+					<keyExpression><![CDATA[$F{SHIPCOUNTRY}]]></keyExpression>
+					<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					<labelExpression><![CDATA[$F{SHIPCOUNTRY}]]></labelExpression>
+					<otherLabelExpression><![CDATA["All the others"]]></otherLabelExpression>
+				</pieDataset>
+				<pie3DPlot isShowLabels="true" isCircular="false">
+					<plot backgroundAlpha="0.5" foregroundAlpha="0.5"/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				</pie3DPlot>
+			</pie3DChart>
+			<pieChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="b504bc67-12d5-4ad8-85be-6ec0a1558bcf" x="291" y="0" width="264" height="175"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Pie 2D"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset maxCount="3">
+					<keyExpression><![CDATA[$F{SHIPCOUNTRY}]]></keyExpression>
+					<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					<labelExpression><![CDATA[$F{SHIPCOUNTRY}]]></labelExpression>
+					<otherLabelExpression><![CDATA["other values"]]></otherLabelExpression>
+				</pieDataset>
+				<piePlot isShowLabels="true">
+					<plot/>
+					<itemLabel color="#FF0033" backgroundColor="#33FF33"/>
+				</piePlot>
+			</pieChart>
+			<barChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="f7564f5f-df63-4a27-af8a-9990a79631df" x="0" y="187" width="291" height="186"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Bar"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Dummy Series"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true">
+					<plot/>
+					<itemLabel/>
+					<categoryAxisLabelExpression><![CDATA["Country"]]></categoryAxisLabelExpression>
+					<valueAxisLabelExpression><![CDATA["Values"]]></valueAxisLabelExpression>
+				</barPlot>
+			</barChart>
+			<stackedBarChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="f436e44d-1eed-4e0c-9308-f241d0a91005" x="291" y="187" width="264" height="186"/>
+					<chartTitle>
+						<titleExpression><![CDATA["StackedBar"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Dummy Series"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Other Series"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true">
+					<plot/>
+					<itemLabel/>
+				</barPlot>
+			</stackedBarChart>
+			<line>
+				<reportElement uuid="f3cd9832-6aac-4794-9b0a-5345376e7818" x="4" y="180" width="551" height="1"/>
+			</line>
+			<lineChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="35617613-7785-4ed3-b77f-c23903db2c3a" x="0" y="385" width="291" height="147"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Line"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Hello"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot isShowLines="true" isShowShapes="true">
+					<plot/>
+				</linePlot>
+			</lineChart>
+			<areaChart>
+				<chart>
+					<reportElement uuid="9201a4b1-26e0-4460-8216-43974f998afa" x="291" y="385" width="264" height="147"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Area"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Dummy Series"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+				</areaPlot>
+			</areaChart>
+			<line>
+				<reportElement uuid="a436db01-482f-43c3-be43-3a1db8b3bf4b" x="4" y="378" width="551" height="1"/>
+			</line>
+			<stackedAreaChart>
+				<chart>
+					<reportElement uuid="efa2896e-1622-4fa3-88e2-c047e56ee0b5" x="0" y="544" width="291" height="163"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Stacked Area"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Dummy Series"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{SHIPCOUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{C}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+				</areaPlot>
+			</stackedAreaChart>
+			<line>
+				<reportElement uuid="4e2774a3-4091-4362-8afc-3324cf720e05" x="4" y="539" width="551" height="1"/>
+			</line>
+			<scatterChart>
+				<chart>
+					<reportElement uuid="d7a5e04d-7d80-4559-9a15-b6f7fb7becf3" x="291" y="544" width="264" height="163"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Scatter Chart"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["Serie"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{C}]]></xValueExpression>
+						<yValueExpression><![CDATA[$F{FREIGHT}]]></yValueExpression>
+						<labelExpression><![CDATA[$F{SHIPCOUNTRY}]]></labelExpression>
+					</xySeries>
+				</xyDataset>
+				<scatterPlot isShowLines="false" isShowShapes="true">
+					<plot/>
+					<xAxisLabelExpression><![CDATA["Position"]]></xAxisLabelExpression>
+					<yAxisLabelExpression><![CDATA["Number"]]></yAxisLabelExpression>
+				</scatterPlot>
+			</scatterChart>
+		</band>
+	</summary>
+</jasperReport>
