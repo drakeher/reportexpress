@@ -9,7 +9,7 @@ of code required to accomplish desired.
 
 Release Information
 ===================
-This repo contains in development code for future releases. There may be big changes in the future.
+This repo contains in development code for future releases.
 
 License
 =======
@@ -20,7 +20,7 @@ Then you can use ReportExpress for free under
 the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. 
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/3.0/.
 
-If your application can't meet the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+If your application can't meet the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License(http://creativecommons.org/licenses/by-nc-sa/3.0/ "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License")
 or is a commercial one (the library is integrated in a software or an appliance you're selling) 
 then you'll have to buy a commercial license.
 Commercial license price are depending of your needs: please contact to yordis.prieto@gmail.com
