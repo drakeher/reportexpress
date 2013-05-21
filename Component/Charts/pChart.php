@@ -6,12 +6,27 @@ require_once(dirname(__FILE__) . '/../../Vendor/pChart/pChart/pData.class');
 require_once(dirname(__FILE__) . '/../../Vendor/pChart/pChart/pChart.class');
 
 /**
- * Description of pChart
- *
- * @author humberto.arencibia
+ * pChart Class
+ * 
+ * This class contains the logic of the pChart.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Chart
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class pChart extends \pChart{       
     
+    /**
+     * Description.
+     * 
+     * @param type $DataDescription
+     * @param type $pieArrayLegend
+     * @return array
+     */
     function getLegendBoxSize($DataDescription, $pieArrayLegend = false)
     {
         
@@ -34,7 +49,7 @@ class pChart extends \pChart{
      $MaxHeight = $MaxHeight - 3;
      $MaxWidth  = $MaxWidth + 32;
 
-     return(array($MaxWidth,$MaxHeight));
+     return array($MaxWidth,$MaxHeight);
     }
 }
 

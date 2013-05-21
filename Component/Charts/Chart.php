@@ -8,48 +8,69 @@ use ReportExpress\Component\Component,
     ReportExpress\Component\Charts\pChart;
 
 /**
- * Description of Chart
- *
- * @author humbe
+ * Chart Class
+ * 
+ * This class contains the logic of the  Chart.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Charts
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 abstract class Chart extends Component {
 
     /**
-     * @var \SimpleXMLElement Estilos de los elementos de la gráfica 
+     * Styles graphical elements.
+     * 
+     * @var \SimpleXMLElement
      */
     protected $plot;
 
     /**
-     * @var \SimpleXMLElement Template paraa parsear los datos
+     * Template to parse the data.
+     * 
+     * @var \SimpleXMLElement
      */
     protected $dataSet;
 
     /**
-     * @var \pData Objeto con los datos a graficar 
+     * Object with the data to graph.
+     * 
+     * @var \pData
      */
     protected $charData;
 
     /**
-     * @var \pChart Objeto para graficar
+     * Object to graph.
+     * 
+     * @var \pChart
      */
     protected $charObj;
 
     /**
-     * @var Array --Array['width'] = whidth -- Array['height'] = height --
+     * --Array['width'] = whidth -- Array['height'] = height --
+     * 
+     * @var Array
      */
     protected $dimencion;
 
     /**
-     * @var Array --Array['width'] = whidth -- Array['height'] = height --
+     * --Array['width'] = whidth -- Array['height'] = height --
+     * 
+     * @var Array
      */
     protected $legend_dimencion;
 
     /**
+     * Constructor of the class.
      * 
      * @param \SimpleXMLElement $plot
      * @param \SimpleXMLElement $dataSet
      * @param \SimpleXMLElement $chart
-     * 
+     * @return void
      */
     public function __construct($plot, $dataSet, $chart) {
         $this->plot = $plot;
@@ -75,7 +96,8 @@ abstract class Chart extends Component {
     /**
      * Dibuja el titulo de la gráfica.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report 
+     * @param \ReportExpress\ReportExpress $report The report.
+     * @return void
      */
     public function titulo($report) {
         $title = $report->analyse((string) $this->data->chartTitle->titleExpression);
@@ -90,18 +112,18 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Devuelve la opacidad con que se dibujarán las series.
+     * Return the opacity to draw the series.
      * 
-     * @return float La Opacidad de las areas dibujadas por las series un
-     * valor entre 0 y 100
+     * @return float Opacity branches series drawn by a value between 0 and 100.
      */
     public function foregroundAlpha() {
         return isset($this->plot->plot['foregroundAlpha']) ? (float) $this->plot->plot['foregroundAlpha'] * 100 : 100;
     }
 
     /**
-     * Establece el gradiente de colores con que se debe dibujar
-     * la gráfica.
+     * Sets the gradient of colors to be draw the graph.
+     * 
+     * @return void
      */
     public function gradientColor() {
         $color1 = array(110, 100, 10);
@@ -111,8 +133,10 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Dibuja la leyenda de la gráfica.
-     * Por defecto se dibuja con el fondo en blanco y con el texto en negro.
+     * Draw the chart legend. Default is drawn with 
+     * white background and black text.
+     * 
+     * @return void
      */
     public function leyenda() {
         if ($this->isShowLegend()) {
@@ -133,7 +157,7 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Calcula las dimenciones de la leyenda.  
+     * Calculate the dimensions of the legend.  
      * 
      * @return array --Array['width'] = whidth -- Array['height'] = height --
      */
@@ -143,9 +167,9 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Devuelve el valor de la propiedad -isShowLegend-.
+     * Returns the value of the property -isShowLegend-.
      * 
-     * @return boolean Valor de -isShowLegend-
+     * @return boolean The value of -isShowLegend-
      */
     public function isShowLegend() {
         return isset($this->data['isShowLegend']) &&
@@ -153,9 +177,10 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Configura los datos a graficar.
+     * Sets the data to graph.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report 
+     * @param \ReportExpress\ReportExpress $report The report.
+     * @return void
      */
     public function configData($report) {
 
@@ -202,9 +227,10 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Prepara la imagen antes de dibujar la gáfica.
+     * Prepare the image before drawing the graph.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report 
+     * @param \ReportExpress\ReportExpress $report The Report.
+     * @return void
      */
     public function preRender($report) {
 
@@ -222,12 +248,12 @@ abstract class Chart extends Component {
     }
 
     /**
-     * Prepara la imagen antes de dibujar la gáfica.
-     * En el caso de las gráficas de Barra, Linea, Area.
+     * Prepare the image before drawing the graph. 
+     * For bar charts, line, area.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report 
-     * @param constant $scale Constante utilizada por pChart para crear
-     * la escala.
+     * @param \ReportExpress\ReportExpress $report The report.
+     * @param constant $scale [optional] Constant used by pChart to create the scale.
+     * @return void
      */
     public function preRenderBarLineArea($scale = SCALE_NORMAL) {
 
@@ -245,12 +271,13 @@ abstract class Chart extends Component {
     }
 
     /**    
-     * Añade la imagen resultante de la gráfica al reporte.
+     * Add the resulting image of the graph to the report.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report
+     * @param \ReportExpress\ReportExpress $report The report.
      * @param int $x
      * @param int $y
      * @param \pChart $picture
+     * @return void
      */
     public function reportAdd($report, $x, $y, $picture) {
 
