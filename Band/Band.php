@@ -19,7 +19,7 @@ use ReportExpress\Component\Rectangle,
 /**
  * Band Class
  * 
- * This class contains the logic of the bands
+ * This class contains the logic of the bands.
  * 
  * @category    Library
  * @package     ReportExpress

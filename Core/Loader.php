@@ -2,10 +2,23 @@
 
 namespace ReportExpress\Core;
 
+/**
+ * Loader Class
+ * 
+ * The Loader Class using SPL
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Core
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+ */
 class Loader {
 
     /**
-     * La direccion de la libreria.
+     * Path of library.
      * @var string 
      */
     private static $path;
@@ -14,7 +27,7 @@ class Loader {
      * Inicializa el $path y la funcion para cargar las clases perdidas
      * de la libreria.
      * 
-     * @param type $path a direccion de la libreria
+     * @param type $path The path of labrary.
      */
     public static function register($path) {
         self::$path = $path;
@@ -22,11 +35,10 @@ class Loader {
     }
 
     /**
-     * Metodo para la autocarga de clases de la libreria.
+     * Find the class within library.
      * 
-     * @param string $class La clase a cargar.
-     * @return boolean TRUE si se cargo la clase. Caso contrario no se encuentra 
-     * y PHP lanza un error. 
+     * @param string $class The class.
+     * @return boolean It was founded.
      */
     private static function load($class) {
 	$class = str_replace("\\",DIRECTORY_SEPARATOR,$class);

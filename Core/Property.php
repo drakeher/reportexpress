@@ -3,96 +3,103 @@
 namespace ReportExpress\Core;
 
 /**
- * ReportExpress
- *
- * @package		ReportExpress
- * @author		Sparkle Team
- * @copyright           Copyright (c) 2013, ReportExpress.
- * @license		http://reportexpress.com/license.html
- * @link		http://reportexpress.com
- * @since		Version 1.0
- * @filesource          ReportExpress/Core/Property.php
+ * Property Class
+ * 
+ * Used for controlling of the report.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Core
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Property {
 
     /**
-     * Nombre del reporte.
+     * Name of report.
      * @var string 
      */
     public $name;
 
     /**
-     * Ancho de la pagina.
+     * Width of page.
      * @var int 
      */
     public $pageWidth;
 
     /**
-     * Altura de la pagina.
+     * Height of page.
      * @var int 
      */
     public $pageHeight;
 
     /**
-     * Orientacion de la pagina.
+     * Orientation of the page.
      * @var string 
      */
     public $orientation;
 
     /**
-     * Margen izquierdo de la pagina.
+     * Margin left of the page.
      * @var int 
      */
     public $leftMargin;
 
     /**
-     * Margen derecho de la pagina.
+     * Margin right of the page.
      * @var int 
      */
     public $rightMargin;
 
     /**
-     * Margen superior de la pagina. 
+     * Margin top of the page. 
      * @var int
      */
     public $topMargin;
 
     /**
-     * Margen inferior de la pagina. 
+     * Margin bottom of the page.
      * @var int
      */
     public $bottomMargin;
 
     /**
-     * Unidad de medida del reporte.
+     * Measurement unit
      * @var string 
      */
     public $unit = "pt";
 
     /**
-     * Formato de la pagina.
+     * Format of page
      * @var string 
      */
     public $format = "A4";
 
     /**
-     * Formato de caracteres.
+     * Format of character.
      * @var boolean 
      */
     public $unicode = TRUE;
 
     /**
-     * Si usaremos la cache.
+     * Use cache
      * @var boolean 
      */
     public $diskcache = TRUE;
 
     /**
-     * Tipo de codigicacion.
+     * Encoding
      * @var string 
      */
     public $encoding = "UTF-8";
-
+    
+    /**
+     * Constructor of the class.
+     * 
+     * @param \SimpleXmlElment $xml XML.
+     */
     public function __construct($xml) {
         $this->name = (string) $xml["name"];
         $this->orientation = isset($xml["orientation"]) ? substr((string) $xml["orientation"], 0, 1) : 'P';

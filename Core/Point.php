@@ -3,36 +3,46 @@
 namespace ReportExpress\Core;
 
 /**
- * ReportExpress
- *
- * @package		ReportExpress
- * @author		Sparkle Team
- * @copyright           Copyright (c) 2013, ReportExpress.
- * @license		http://reportexpress.com/license.html
- * @link		http://reportexpress.com
- * @since		Version 1.0
- * @filesource          ReportExpress/Core/Point.php
+ * Point Class
+ * 
+ * Used for controlling the axis.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Core
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Point {
 
     /**
-     * La posicion x.
+     * The position (x).
      * @var int 
      */
     public $x;
 
     /**
-     * La posicion y.
+     * The position (y).
      * @var int 
      */
     public $y;
 
     /**
-     * El maximo de la banda.
+     * The maximum of the band.
      * @var int 
      */
     public $mxb;
-
+    
+    /**
+     * Constructor of the class.
+     * 
+     * @param int $x The position (x).
+     * @param int $y The position (y).
+     * @param int $mxb The maximum of the band.
+     * @return void
+     */
     public function __construct($x, $y, $mxb = 0) {
         $this->x = $x;
         $this->y = $y;

@@ -5,7 +5,7 @@ namespace ReportExpress\Band;
 /**
  * Group Class
  * 
- * This class contains the logic of the Group bands
+ * This class contains the logic of the Group bands.
  * 
  * @category    Library
  * @package     ReportExpress

@@ -5,7 +5,7 @@ namespace ReportExpress\Band;
 /**
  * Detail Class
  * 
- * This class contains the logic of the Detail bands
+ * This class contains the logic of the Detail bands.
  * 
  * @category    Library
  * @package     ReportExpress
