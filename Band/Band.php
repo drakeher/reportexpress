@@ -15,212 +15,203 @@ use ReportExpress\Component\Rectangle,
     ReportExpress\Component\Charts\AreaChart,
     ReportExpress\Component\Charts\Pie3DChart;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of Band
- *
- * @author osley.rivera
+ * Band Class
+ * 
+ * This class contains the logic of the bands
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Band
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Band {
 
-    /**
-     * Datos de la banda provenientes del jrxml.
-     * @var \SimpleXMLElement 
-     */
-    protected $data = NULL;
+   /** @var \SimpleXMLElement Data from the jrxml band. */
+   protected $data = NULL;
 
-    /**
-     * Lista de componentes a renderear.
-     * @var array 
-     */
-    protected $component = array();
+   /** @var array List of components to render. */
+   protected $component = array();
 
-    /**
-     * La altura maxima que alcanzan los componentes.
-     * @var int 
-     */
-    protected $maxy = 0;
+   /** @var int The maximum height of the components. */
+   protected $maxy = 0;
 
-    /**
-     * Lista de componentes a renderear.
-     * @var array 
-     */
-    protected $after = array();
+   /** @var array List of components to render. */
+   protected $after = array();
 
-    /**
-     * 
-     */
-    public function __construct($band) {
+   /**
+    * Constructor of the class.
+    * 
+    * @param \SimpleXMLElement $band Data from the jrxml band.
+    * @return void
+    */
+   public function __construct($band) {
+      $this->data = $band;
+      $this->component = $this->collect($band);
+      $this->solveComponent();
+   }
 
-        $this->data = $band;
+   /**
+    * Collect components containing the band.
+    * 
+    * @param \SimpleXMLElement $band The band to collect.
+    * @return array The list of components collected.
+    */
+   public static function collect($band) {
+      $component = array();
+      foreach ($band->children() as $name => $elem) {
+	 switch ($name) {
+	    case 'rectangle':
+	       $component[] = new Rectangle($elem);
+	       break;
+	    case 'staticText':
+	       $component[] = new StaticText($elem);
+	       break;
+	    case 'textField':
+	       $component[] = new TextField($elem);
+	       break;
+	    case 'line':
+	       $component[] = new Line($elem);
+	       break;
+	    case 'ellipse':
+	       $component[] = new Ellipse($elem);
+	       break;
+	    case 'image':
+	       $component[] = new Image($elem);
+	       break;
+	    case 'pie3DChart':
+	       $component[] = new Pie3DChart($elem->pie3DPlot, $elem->pieDataset, $elem->chart);
+	       break;
+	    case 'pieChart':
+	       $component[] = new PieChart($elem->piePlot, $elem->pieDataset, $elem->chart);
+	       break;
+	    case 'lineChart':
+	       $component[] = new LineChart($elem->linePlot, $elem->categoryDataset, $elem->chart);
+	       break;
+	    case 'barChart':
+	       $component[] = new BarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
+	       break;
+	    case 'stackedBarChart':
+	       $component[] = new StakedBarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
+	       break;
+	    case 'areaChart':
+	       $component[] = new AreaChart($elem->areaPlot, $elem->categoryDataset, $elem->chart);
+	       break;
+	    default:
+	       //no interesa procesar el tag
+	       break;
+	 }
+      }
 
-        $this->component = $this->collect($band);
+      return $component;
+   }
 
-        $this->solveComponent();
-    }
+   /**
+    * Return the height of the band.
+    * 
+    * @return int The Height.
+    */
+   public function height() {
+      return (int) $this->data['height'];
+   }
 
-    /**
-     * Colecciona los componentes que contiene la banda.
-     * 
-     * @param \SimpleXMLElement $band La banda a coleccionar.
-     * @return array La lista de componentes recolectados.
-     */
-    public static function collect($band) {
-        $component = array();
-        foreach ($band->children() as $name => $elem) {
-            switch ($name) {
-                case 'rectangle':
-                    $component[] = new Rectangle($elem);
-                    break;
-                case 'staticText':
-                    $component[] = new StaticText($elem);
-                    break;
-                case 'textField':
-                    $component[] = new TextField($elem);
-                    break;
-                case 'line':
-                    $component[] = new Line($elem);
-                    break;
-                case 'ellipse':
-                    $component[] = new Ellipse($elem);
-                    break;
-                case 'image':
-                    $component[] = new Image($elem);
-                    break;
+   /**
+    * Return the splitType of the band.
+    * 
+    * @return string The splitType.
+    */
+   public function split() {
+      return (string) $this->data['splitType'];
+   }
 
-                case 'pie3DChart':
-                    $component[] = new Pie3DChart($elem->pie3DPlot, $elem->pieDataset, $elem->chart);
-                    break;
-                case 'pieChart':
-                    $component[] = new PieChart($elem->piePlot, $elem->pieDataset, $elem->chart);
-                    break;
-                case 'lineChart':
-                    $component[] = new LineChart($elem->linePlot, $elem->categoryDataset, $elem->chart);
-                    break;
-                case 'barChart':
-                    $component[] = new BarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
-                    break;
-                case 'stackedBarChart':
-                    $component[] = new StakedBarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
-                    break;
-                case 'areaChart':
-                    $component[] = new AreaChart($elem->areaPlot, $elem->categoryDataset, $elem->chart);
-                    break;
-           
-                default:
-                    //no interesa procesar el tag
-                    break;
-            }
-        }
+   /**
+    * Returns the result of the expression in printWhenExpression attribute has 
+    * been modified, otherwise returns TRUE.
+    * 
+    * @param \ReportExpress\ReportExpress $report
+    * @return boolean The result of the expression.
+    */
+   public function printWhenExpression($report) {
+      return isset($this->data->printWhenExpression) ? (boolean) $report->analyse((string) $this->data->printWhenExpression) : TRUE;
+   }
 
-        return $component;
-    }
+   /**
+    * Render the components of the band.
+    * 
+    * @param \ReportExpress\ReportExpress $report The report which is rendered.
+    * @param \ReportExpress\Core\Point $point The point where it begins to render.
+    * @return void
+    */
+   public function render($report, $point) {
+      $this->height = 0;
+      //rendereamos component
+      $this->realRender('component', $report, $point);
+      //redereamos after
+      $this->realRender('after', $report, $point);
+   }
 
-    /**
-     * Davuelve la altura de la banda.
-     * 
-     * @return int La altura
-     */
-    public function height() {
-        return (int) $this->data['height'];
-    }
+   /**
+    * Manages as shows the components within the band.
+    * 
+    * @param string $component The component type shown (component or after).
+    * @param \ReportExpress\ReportExpress $report Where it renders a report.
+    * @param \ReportExpress\Core\Point $point The point.
+    */
+   public function realRender($component, $report, $point) {
 
-    /**
-     * Devuelve el splitType de la banda.
-     * 
-     * @return string El splitType
-     */
-    public function split() {
-        return (string) $this->data['splitType'];
-    }
+      foreach ($this->$component as $c) {
 
-    /**
-     * Devuelve el resultado de la expresion en el atributo printWhenExpression
-     * si ha sido modificado, sino devuelve TRUE.
-     * @param \ReportExpress\Core\ReportExpress $report
-     * @return boolean El resultado de la expresion.
-     */
-    public function printWhenExpression($report) {
-        return isset($this->data->printWhenExpression) ? (boolean) $report->analyse((string) $this->data->printWhenExpression) : TRUE;
-    }
+	 //chequeamos que se pueda imprimir
+	 if ($c->printWhenExpression($report) == FALSE) {
+	    continue;
+	 }
 
-    /**
-     * Renderea los componentes de la Banda.
-     * 
-     * @param \ReportExpress\Core\ReportExpress $report EL reporte donde se renderea.
-     * @param \ReportExpress\Core\Point $point El punto donde comienza a renderearse.
-     */
-    public function render($report, $point) {
+	 if ($c->render($report, $point->x, $component == 'component' ? $point->y : (($point->y + $this->height) - $c->height()) - $c->y()) == FALSE) {
+	    //este es el caso en que el componente debe ser rendeareado
+	    //al final de la pagina, asi nos saltamos los pasos siguientes
+	    //y lo mostramos al final.
+	    continue;
+	 }
 
-        $this->height = 0;
+	 $lastheight = $report->get('pdf')->getY() - $point->y;
 
-        //rendereamos component
-        $this->realRender('component', $report, $point);
-        //redereamos after
-        $this->realRender('after', $report, $point);
-    }
+	 if ($lastheight > $this->height) {
+	    $this->height = $lastheight;
+	 }
+      }
+   }
 
-    /**
-     * Maneja como se muestran los componentes dentro de la banda.
-     * 
-     * @param string $component El tipo de componente que se muestra (component o after).
-     * @param \ReportExpress\Core\ReportExpress $report El reporte donde se renderea.
-     * @param \ReportExpress\Core\Point $point El pundo
-     */
-    public function realRender($component, $report, $point) {
+   /**
+    * Separate components and component after, which determines 
+    * who is to be displayed first.
+    * 
+    * @return void
+    */
+   public function solveComponent() {
 
-        foreach ($this->$component as $c) {
+      $component = array();
 
-            //chequeamos que se pueda imprimir
-            if ($c->printWhenExpression($report) == FALSE) {
-                continue;
-            }
+      foreach ($this->component as $c) {
 
-            if ($c->render($report, $point->x, $component == 'component' ? $point->y : (($point->y + $this->height) - $c->height()) - $c->y()) == FALSE) {
-                //este es el caso en que el componente debe ser rendeareado
-                //al final de la pagina, asi nos saltamos los pasos siguientes
-                //y lo mostramos al final.
-                continue;
-            }
+	 if ($c->positionType() == 'FixRelativeToBottom') {
+	    $this->after [] = $c;
+	 } else {
+	    $component [] = $c;
+	 }
 
-            $lastheight = $report->get('pdf')->getY() - $point->y;
+	 $nmaxy = $c->y() + $c->height();
 
-            if ($lastheight > $this->height) {
-                $this->height = $lastheight;
-            }
-        }
-    }
-
-    /**
-     * Separa los componentes en after y component, lo cual determina quien 
-     * se debe mostrar primero.
-     */
-    public function solveComponent() {
-
-        $component = array();
-
-        foreach ($this->component as $c) {
-
-            if ($c->positionType() == 'FixRelativeToBottom') {
-                $this->after [] = $c;
-            } else {
-                $component [] = $c;
-            }
-
-            $nmaxy = $c->y() + $c->height();
-
-            if ($nmaxy > $this->maxy) {
-                $this->maxy = $nmaxy;
-            }
-        }
-
-        //componentes que se renderean primero
-        $this->component = $component;
-    }
+	 if ($nmaxy > $this->maxy) {
+	    $this->maxy = $nmaxy;
+	 }
+      }
+      //componentes que se renderean primero
+      $this->component = $component;
+   }
 
 }
 
