@@ -17,9 +17,9 @@ The ReportExpress library is released under two different licenses.
 
 **Do you want to use ReportExpress for a personal or non-profit project?**
 Then you can use ReportExpress for free under 
-the [**Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License**](http://creativecommons.org/licenses/by-nc-sa/3.0/ "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License")
+the [**Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License**][1]
 
-If your application can't meet the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/ "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License")
+If your application can't meet the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License][1]
 or is a commercial one (the library is integrated in a software or an appliance you're selling) 
 then you'll have to buy a commercial license.
 Commercial license price are depending of your needs: please contact to yordis.prieto@gmail.com
@@ -39,3 +39,5 @@ Limitations of Liability
 YOU ASSUME ALL RISK ASSOCIATED WITH THE INSTALLATION AND USE OF THE SOFTWARE. 
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS OF THE SOFTWARE BE LIABLE FOR CLAIMS, 
 DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE. 
+
+[1]: http://creativecommons.org/licenses/by-nc-sa/3.0/
