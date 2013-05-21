@@ -2,54 +2,60 @@
 
 namespace ReportExpress\Component;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Puede que en un futuro esta clase provea algunos metodos para 
- * manipular los datos. Por ahora es solo recipiente para los dataset
- * utilizados en el reporte.
- *
- * @author osley.rivera
+ * Dataset Class
+ * 
+ * This class contains the logic of the Dataset component.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Component
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class DataSet {
 
-    /**
-     * Nombre del dataset.
-     * @var string 
-     */
-    private $name = '';
+   /**
+    * Dataset name.
+    * @var string 
+    */
+   private $name = '';
 
-    /**
-     * Datos del dataset.
-     * @var array 
-     */
-    private $data = array();
+   /**
+    * Dataset data.
+    * @var array 
+    */
+   private $data = array();
+   /**
+    * Constructor of the class.
+    * 
+    * @param type $name Dataset name.
+    * @param type $data Dataset data.
+    */
+   public function __construct($name, $data) {
+      $this->name = $name;
+      $this->data = $data;
+   }
 
-    public function __construct($name, $data) {
-        $this->name = $name;
-        $this->data = $data;
-    }
+   /**
+    * Return dataset name.
+    * 
+    * @return string Tha name.
+    */
+   public function name() {
+      return $this->name;
+   }
 
-    /**
-     * Devuelve el nombre del dataset.
-     * 
-     * @return string El nombre.
-     */
-    public function name() {
-        return $this->name;
-    }
-
-    /**
-     * Devuelve los datos.
-     * 
-     * @return array Datos.
-     */
-    public function getData() {
-        return $this->data;
-    }
+   /**
+    * Return dataset data.
+    * 
+    * @return array The data.
+    */
+   public function getData() {
+      return $this->data;
+   }
 
 }
 

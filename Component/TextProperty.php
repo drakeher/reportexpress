@@ -2,169 +2,181 @@
 
 namespace ReportExpress\Component;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of TextProperty
- *
- * @author osley.rivera
+ * TextProperty Class
+ * 
+ * This class contains the logic of the TextProperty component.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Component
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 abstract class TextProperty extends Component {
 
-    /**
-     * @TODO No programada.
-     * @var type 
-     */
-    protected $pdfEmbedded = FALSE;
+   /**
+    * @TODO Not programmed.
+    * @var type 
+    */
+   protected $pdfEmbedded = FALSE;
 
-    /**
-     * @TODO No programada.
-     * @var type (Center,Left,Right,Justified)
-     */
-    protected $horizontalAlignment = 'Left';
+   /**
+    * (Center,Left,Right,Justified)
+    * 
+    * @TODO Not programmed
+    * @var string
+    */
+   protected $horizontalAlignment = 'Left';
 
-    /**
-     * @TODO No programada.
-     * @var type (Middle,Top,Bottom)
-     */
-    protected $verticalAlignment = 'Top';
+   /**
+    * (Middle,Top,Bottom)
+    * 
+    * @TODO Not programmed
+    * @var string
+    */
+   protected $verticalAlignment = 'Top';
 
-    /**
-     * Posicion hacia la que debe rotar.
-     * @var type (UpsideDown,Left,Right)
-     */
-    protected $rotation = '';
+   /**
+    * Position into which must rotate. (UpsideDown,Left,Right)
+    * @var string
+    */
+   protected $rotation = '';
 
-    /**
-     * @TODO No programada.
-     * @var type (Single,1.5,Double)
-     */
-    protected $lineSpacing = 'Single';
+   /**
+    * (Single,1.5,Double)
+    * 
+    * @TODO Not programmed.
+    * @var string
+    */
+   protected $lineSpacing = 'Single';
 
-    /**
-     * @TODO No programada.
-     * @var type 
-     */
-    protected $markup = '';
+   /**
+    * @TODO Not programmed.
+    * @var string 
+    */
+   protected $markup = '';
 
-    public function __construct($data) {
-        parent::__construct($data);
-    }
+   /**
+    * {@inheritdoc}
+    */
+   public function __construct($data) {
+      parent::__construct($data);
+   }
 
-    /**
-     * Devuelve el nombre del tipo de letra.
-     * 
-     * @return string EL nombre.
-     */
-    public function fontName() {
-        return isset($this->data->textElement->font->fontName) ? $this->data->textElement->font->fontName : 'times';
-    }
+   /**
+    * Returns the name of the font.
+    * 
+    * @return string The name of font.
+    */
+   public function fontName() {
+      return isset($this->data->textElement->font->fontName) ? $this->data->textElement->font->fontName : 'times';
+   }
 
-    /**
-     * Devuelve el estilo de la letra.
-     * 
-     * @return string El estilo.
-     */
-    public function fontStyle() {
+   /**
+    * Return the font style.
+    * 
+    * @return string The font style.
+    */
+   public function fontStyle() {
 
-        $style = '';
+      $style = '';
 
-        $font = $this->data->textElement->font;
+      $font = $this->data->textElement->font;
 
-        if ((string) $font['isBold'] == 'true') {
-            $style = 'B';
-        }
-        if ((string) $font['isItalic'] == 'true') {
-            $style .= 'I';
-        }
-        if ((string) $font['isUnderline'] == 'true') {
-            $style .= 'U';
-        }
-        if ((string) $font['isStrikeThrough'] == 'true') {
-            $style .= 'D';
-        }
-        return $style;
-    }
+      if ((string) $font['isBold'] == 'true') {
+	 $style = 'B';
+      }
+      if ((string) $font['isItalic'] == 'true') {
+	 $style .= 'I';
+      }
+      if ((string) $font['isUnderline'] == 'true') {
+	 $style .= 'U';
+      }
+      if ((string) $font['isStrikeThrough'] == 'true') {
+	 $style .= 'D';
+      }
+      return $style;
+   }
 
-    /**
-     * Tamaño de la letra.
-     * 
-     * @return int El valor.
-     */
-    public function size() {
-        return (int) $this->data->textElement->font['size'] ? (int) $this->data->textElement->font['size'] : 10;
-    }
+   /**
+    * Return the font size.
+    * 
+    * @return int The font size.
+    */
+   public function size() {
+      return (int) $this->data->textElement->font['size'] ? (int) $this->data->textElement->font['size'] : 10;
+   }
 
-    /**
-     * Devuelve la alineacion del texto (L=>left,C=>center,R=>right).
-     * 
-     * @return string La alineacion.
-     */
-    public function aling() {
-        return isset($this->data->textElement['textAlignment']) ? substr((string) $this->data->textElement['textAlignment'], 0, 1) : 'L';
-    }
+   /**
+    * Return the text align (L=>left,C=>center,R=>right).
+    * 
+    * @return string The align.
+    */
+   public function aling() {
+      return isset($this->data->textElement['textAlignment']) ? substr((string) $this->data->textElement['textAlignment'], 0, 1) : 'L';
+   }
 
-    /**
-     * Indica si se debe rotar.
-     * 
-     * @return boolean TRUE o FALSE.
-     */
-    public function needRotate() {
-        return isset($this->data->textElement['rotation']);
-    }
+   /**
+    * Indicates whether to rotate.
+    * 
+    * @return boolean
+    */
+   public function needRotate() {
+      return isset($this->data->textElement['rotation']);
+   }
 
-    /**
-     * Devuelve el angulo al que se debe rotar.
-     * 
-     * @return int Angulo.
-     */
-    public function angle() {
-        //@TODO rotacion basica
-        switch ($this->rotate()) {
-            case "Left":
-                return 90;
-                break;
-            case "Right":
-                return 270;
-                break;
-            case "UpsideDown":
-                return 180;
-                break;
-            default:
-                return 0;
-                break;
-        }
-    }
+   /**
+    * Returns the angle to which to rotate.
+    * 
+    * @return int The angle.
+    */
+   public function angle() {
+      //@TODO rotacion basica
+      switch ($this->rotate()) {
+	 case "Left":
+	    return 90;
+	    break;
+	 case "Right":
+	    return 270;
+	    break;
+	 case "UpsideDown":
+	    return 180;
+	    break;
+	 default:
+	    return 0;
+	    break;
+      }
+   }
 
-    /**
-     * Devuelve el lado al que se debe rotar.
-     * @return string Lado.
-     */
-    public function rotate() {
-        return (string) $this->data->textElement['rotation'];
-    }
+   /**
+    * Returns the side to which to rotate.
+    * @return string The side.
+    */
+   public function rotate() {
+      return (string) $this->data->textElement['rotation'];
+   }
 
-    /**
-     * Indica si la celda se debe adaptar al contenido maximizandose o
-     * si el contenido se adapta a la celda.
-     * 
-     * @return boolean TRUE o FALSE.
-     */
-    public function isStretchWithOverflow() {
-        return isset($this->data['isStretchWithOverflow']);
-    }
+   /**
+    * Indicates whether the cell should be tailored to maximizing content or 
+    * the content is adapted to the cell.
+    * 
+    * @return boolean
+    */
+   public function isStretchWithOverflow() {
+      return isset($this->data['isStretchWithOverflow']);
+   }
 
-    /**
-     * Devuelve el momento que debe ser evaluado.
-     * 
-     * @return string El tiempo.
-     */
-    public function evaluationTime() {
-        return (string) $this->data['evaluationTime'];
-    }
+   /**
+    * Give me back the time that should be evaluated.
+    * 
+    * @return string The time.
+    */
+   public function evaluationTime() {
+      return (string) $this->data['evaluationTime'];
+   }
 
 }
 
