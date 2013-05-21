@@ -31,16 +31,28 @@ use ReportExpress\Component\Rectangle,
  */
 class Band {
 
-   /** @var \SimpleXMLElement Data from the jrxml band. */
+   /**
+    * Data from the jrxml band. 
+    * @var \SimpleXMLElement  
+    */
    protected $data = NULL;
 
-   /** @var array List of components to render. */
+   /**
+    * List of components to render. 
+    * @var array 
+    */
    protected $component = array();
 
-   /** @var int The maximum height of the components. */
+   /**
+    * The maximum height of the components.
+    * @var int 
+    */
    protected $maxy = 0;
 
-   /** @var array List of components to render. */
+   /**
+    * List of components to render. 
+    * @var array  
+    */
    protected $after = array();
 
    /**

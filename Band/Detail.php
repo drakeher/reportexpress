@@ -2,174 +2,170 @@
 
 namespace ReportExpress\Band;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Detail
- *
- * @author osley.rivera
+ * Detail Class
+ * 
+ * This class contains the logic of the Detail bands
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Band
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Detail extends Band {
 
-    /**
-     * Ultimo valor que alcanza la y al renderearse una fila.
-     * @var int 
-     */
-    private $lasty = 0;
+   /**
+    * Last value that reaches the Y axis to renderearse a row. 
+    * @var int
+    */
+   private $lasty = 0;
 
-    /**
-     * Indica si en un salto de pagina existen grupos colgados.
-     * @var boolean 
-     */
-    private $hangingFooter = FALSE;
+   /**
+    * Indicates whether a page break hanging groups exist. 
+    * @var boolean 
+    */
+   private $hangingFooter = FALSE;
 
-    public function __construct($xml) {
-        parent::__construct($xml->detail->band);
-    }
+   /**
+    * Construtor of the class
+    * 
+    * @param \SimpleXmlElment $xml XML from band.
+    * @return void
+    */
+   public function __construct($xml) {
+      parent::__construct($xml->detail->band);
+   }
 
-    /**
-     * Renderea los componentes de la Banda.
-     * 
-     * @param \ReportExpress\Core\ReportExpress $report EL reporte donde se renderea.
-     * @param \ReportExpress\Core\Point $point El punto donde comienza a renderearse.
-     * @return string El estado en que quedo renderear la fila.
-     */
-    public function render($report, $point) {
+   /**
+    * {@inheritdoc}
+    * @return The state of was rendered the row.
+    */
+   public function render($report, $point) {
+      //si existe algun groupfooter colgado lo redereamos
+      if ($this->hangingFooter) {
+	 $this->renderGroupFooter($report, $point);
+	 $this->hangingFooter = FALSE;
+      }
+      //evaluamos la variables
+      $report->evaluationVariable();
+      //evaluamos los groupheader
+      if (!$this->renderGroupHeader($report, $point)) {
+	 return 'newpage';
+      }
+      //si no hay suficiente espacio para la fila de detalle state:newpage
+      if ($this->maxy + $point->y > $point->mxb) {
+	 return 'newpage';
+      }
+      //indica realmente cuanto crecio la fila al ser rendereada
+      $this->height = 0;
+      //rendereamos component
+      $this->realRender('component', $report, $point);
+      //redereamos after
+      $this->realRender('after', $report, $point);
+      //actualizamos la ultima posicion que obtuvo la el eje y
+      $this->lasty = $point->y += $this->height;
+      return 'otherrow';
+   }
 
-        //si existe algun groupfooter colgado lo redereamos
-        if ($this->hangingFooter) {
-            $this->renderGroupFooter($report, $point);
-            $this->hangingFooter = FALSE;
-        }
+   /**
+    * Returns the maximum value reached by the (y) but the average height
+    * of each row. This method is used to know If space 
+    * remains to display the next row.
+    * 
+    * @return int The value
+    */
+   public function maxRow() {
+      return $this->maxy + $this->lasty;
+   }
 
-        //evaluamos la variables
-        $report->evaluationVariable();
+   /**
+    * Returns the maximum value reached by the (y).
+    * 
+    * @return int The value.
+    */
+   public function lasty() {
+      return $this->lasty;
+   }
 
-        //evaluamos los groupheader
-        if (!$this->renderGroupHeader($report, $point)) {
-            return 'newpage';
-        }
+   /**
+    * sets the value of the last (y).
+    * 
+    * @param int $value The new value of  (y).
+    */
+   public function setLasty($value) {
+      $this->lasty = $value;
+   }
 
-        //si no hay suficiente espacio para la fila de detalle state:newpage
-        if ($this->maxy + $point->y > $point->mxb) {
-            return 'newpage';
-        }
+   /**
+    * Render header groups.
+    * 
+    * @param \ReportExpress\ReportExpress $report The report which is rendered.
+    * @param \ReportExpress\Point $point The point where it begins to render.
+    * @return boolean Return TRUE or FALSE to indicate whether 
+    * the groups are rendered totally header.
+    */
+   public function renderGroupHeader($report, $point) {
 
-        //indica realmente cuanto crecio la fila al ser rendereada
-        $this->height = 0;
+      if ($report->hasGroups()) {
 
-        //rendereamos component
-        $this->realRender('component', $report, $point);
+	 foreach ($report->get('groups') as $group) {
 
-        //redereamos after
-        $this->realRender('after', $report, $point);
+	    $result = $report->analyse($group->groupExpression());
 
-        //actualizamos la ultima posicion que obtuvo la el eje y
-        $this->lasty = $point->y += $this->height;
+	    if ($result != $group->value('header')) {
+	       if (!$group->render($report, $point, 'header')) {
+		  return FALSE;
+	       }
+	       $group->setValue('header', $result);
 
-        return 'otherrow';
-    }
+	       if ($report->index() == 0) {
+		  $group->setValue('footer', $result);
+	       }
+	    }
+	 }
+      }
 
-    /**
-     * Devuelve el maximo valor alcanzado por la y mas la altura promedio
-     * de cada fila. Este metodo se usa para conocer si queda espacio para 
-     * mostrar la proxima fila.
-     * 
-     * @return int El valor.
-     */
-    public function maxRow() {
-        return $this->maxy + $this->lasty;
-    }
+      return TRUE;
+   }
 
-    /**
-     * Devuelve el maximo valor alcanzado por la y.
-     * @return int El valor.
-     */
-    public function lasty() {
-        return $this->lasty;
-    }
+   /**
+    * Render the final groups.
+    * 
+    * @param \ReportExpress\ReportExpress $report The report which is rendered.
+    * @param \ReportExpress\Core\Point $point The point where it begins to render.
+    * 
+    * @return boolean Return TRUE or FALSE to indicate whether fully 
+    * rendered the final groups.
+    */
+   public function renderGroupFooter($report, $point) {
 
-    /**
-     * Cambia el valor de la ultima y.
-     * 
-     * @param int $value El nuevo valor de las y.
-     */
-    public function setLasty($value) {
-        $this->lasty = $value;
-    }
+      if ($report->hasGroups()) {
 
-    /**
-     * Renderea los grupos de cabecera.
-     * 
-     * @param \ReportExpress\Core\ReportExpress $report EL reporte donde se renderea.
-     * @param \ReportExpress\Core\Point $point El punto donde comienza a renderearse.
-     * 
-     * @return boolean Devuelve TRUE o FALSE para indicar si se renderearon 
-     * totalmente los grupos cabecera. 
-     */
-    public function renderGroupHeader($report, $point) {
+	 $groups = $report->get('groups');
 
-        if ($report->hasGroups()) {
+	 for ($i = count($groups) - 1; $i >= 0; $i--) {
 
-            foreach ($report->get('groups') as $group) {
+	    $result = $report->analyse($groups[$i]->groupExpression());
 
-                $result = $report->analyse($group->groupExpression());
+	    if ($result != $groups[$i]->value('footer')) {
+	       if (!$groups[$i]->render($report, $point, 'footer')) {
+		  $this->hangingFooter = TRUE;
+		  return FALSE;
+	       }
 
-                if ($result != $group->value('header')) {
-                    if (!$group->render($report, $point, 'header')) {
-                        return FALSE;
-                    }
-                    $group->setValue('header', $result);
+	       $groups[$i]->setValue('footer', $result);
 
-                    if ($report->index() == 0) {
-                        $group->setValue('footer', $result);
-                    }
-                }
-            }
-        }
+	       //reseteamos todas las variables de tipo Group
+	       $report->resetVariables('Group', $groups[$i]->name());
+	    }
+	 }
+      }
 
-        return TRUE;
-    }
-
-    /**
-     * Renderea los grupos finales.
-     * 
-     * @param \ReportExpress\Core\ReportExpress $report EL reporte donde se renderea.
-     * @param \ReportExpress\Core\Point $point El punto donde comienza a renderearse.
-     * 
-     * @return boolean Devuelve TRUE o FALSE para indicar si se renderearon 
-     * totalmente los grupos finales. 
-     */
-    public function renderGroupFooter($report, $point) {
-
-        if ($report->hasGroups()) {
-
-            $groups = $report->get('groups');
-
-            for ($i = count($groups) - 1; $i >= 0; $i--) {
-
-                $result = $report->analyse($groups[$i]->groupExpression());
-
-                if ($result != $groups[$i]->value('footer')) {
-                    if (!$groups[$i]->render($report, $point, 'footer')) {
-                        $this->hangingFooter = TRUE;
-                        return FALSE;
-                    }
-
-                    $groups[$i]->setValue('footer', $result);
-
-                    //reseteamos todas las variables de tipo Group
-                    $report->resetVariables('Group', $groups[$i]->name());
-                }
-            }
-        }
-
-        return TRUE;
-    }
+      return TRUE;
+   }
 
 }
-
 ?>

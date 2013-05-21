@@ -30,76 +30,148 @@ use ReportExpress\Component\DataSet,
  */
 class ReportExpress {
 
-   /** @var string Version of the library. */
+   /**
+    * Version of the library. 
+    * @var string 
+    */
    private $version = '1.0';
 
-   /** @var \TCPDF Instance of the class TCPDF. */
+   /**
+    * Instance of the class TCPDF. 
+    * @var \TCPDF
+    */
    private $pdf;
 
-   /** @var \SimpleXMLElement jrxml data of report. */
+   /**
+    * jrxml data of report. 
+    * @var \SimpleXMLElement
+    */
    private $xml;
 
-   /** @var \ReportExpress\Core\Property Properties of report. */
+   /**
+    * Properties of report. 
+    * @var \ReportExpress\Core\Property 
+    */
    private $property;
 
-   /** @var \ReportExpress\Band\Band Background band. */
+   /**
+    * Background band. 
+    * @var \ReportExpress\Band\Band 
+    */
    private $background = NULL;
 
-   /** @var \ReportExpress\Band\Band Title band. */
+   /**
+    * Title band. 
+    * @var \ReportExpress\Band\Band  
+    */
    private $title = NULL;
 
-   /** @var \ReportExpress\Band\Band PageHeader band. */
+   /**
+    * PageHeader band. 
+    * @var \ReportExpress\Band\Band 
+    */
    private $pageheader = NULL;
 
-   /** @var \ReportExpress\Band\Band ColumnHeader band. */
+   /**
+    * ColumnHeader band. 
+    * @var \ReportExpress\Band\Band 
+    */
    private $columnheader = NULL;
 
-   /** @var \ReportExpress\Band\Band Detail band. */
+   /**
+    * Detail band. 
+    * @var \ReportExpress\Band\Band  
+    */
    private $detail = NULL;
 
-   /** @var \ReportExpress\Band\Band ColumnFooter band. */
+   /**
+    * ColumnFooter band. 
+    * @var \ReportExpress\Band\Band  
+    */
    private $columnfooter = NULL;
 
-   /** @var \ReportExpress\Band\Band PageFooter band. */
+   /**
+    * PageFooter band. 
+    * @var \ReportExpress\Band\Band  
+    */
    private $pagefooter = NULL;
 
-   /** @var \ReportExpress\Band\Band Summary band. */
+   /**
+    * Summary band. 
+    * @var \ReportExpress\Band\Band 
+    */
    private $summary = NULL;
 
-   /** @var ReportExpress\Band\Group List of groups. */
+   /**
+    * List of groups. 
+    * @var ReportExpress\Band\Group  
+    */
    private $groups = array();
 
-   /** @var array Report Data. */
+   /**
+    * Report Data. 
+    * @var array  
+    */
    private $values = NULL;
 
-   /** @var array Regular expressions for variables iReport map. */
+   /**
+    * Regular expressions for variables iReport map. 
+    * @var array  
+    */
    private $varexpr = array('/\$V\{PAGE_NUMBER\}/', '/\$V\{REPORT_COUNT\}/', '/\$V\{PAGE_COUNT\}/');
 
-   /** @var array iReport variable values​​. */
+   /**
+    * iReport variable values​​. 
+    * @var array 
+    */
    private $ownvariables = array('PAGE_NUMBER' => 0, 'REPORT_COUNT' => 0, 'PAGE_COUNT' => 1);
 
-   /** @var array External variables defined in the report. */
+   /**
+    * External variables defined in the report. 
+    * @var array  
+    */
    private $variables = array();
 
-   /** @var array Parameters used by the report. */
+   /**
+    * Parameters used by the report. 
+    * @var array  
+    */
    private $parameter = array();
 
-   /** @var array Save all components that need to be evaluated at the end of the rendering of the page. */
+   /**
+    * Save all components that need to be evaluated at the end of the rendering of the page.
+    * @var array  
+    */
    private $evaluatePage = array();
 
-   /** @var boolean Indicates that can if they can be evaluated variables page. */
+   /**
+    * Indicates that can if they can be evaluated variables page. 
+    * @var boolean  
+    */
    private $readyPage = FALSE;
 
-   /** @var string Path to the report. */
+   /**
+    * Path to the report. 
+    * @var string
+    */
    private $path = '';
 
-   /** @var string|jrxml Extention of the report, it defaults jrxml. */
+   /**
+    * Extention of the report, it defaults jrxml. 
+    * @var string|jrxml 
+    */
    private $ext = 'jrxml';
 
-   /** @var \ReportExpress\Component\DataSet List dataset used in the report. */
+   /**
+    * List dataset used in the report. 
+    * @var \ReportExpress\Component\DataSet  
+    */
    private $dataset = array();
 
-   /** @var int Total items in values. */
+   /**
+    * Total items in values. 
+    * @var int
+    */
    private $total = 0;
 
    public function __construct() {
@@ -158,15 +230,15 @@ class ReportExpress {
 
       //cantidad de elementos
       $this->total = count($data);
-      
+
       //recolectamos los parametros
       if ($parameters) {
 	 $this->collectParameters($parameters);
       }
-      
+
       //recolectamos las variables
       $this->variables = $this->collectVariables($this->xml);
-      
+
       //parseamos el xml para llevalo a clases php
       $this->parser();
    }
@@ -670,7 +742,7 @@ class ReportExpress {
 	 $this->columnheader->render($this, $this->position['columnheader']);
       }
    }
-   
+
    /**
     * Render the ColumnFooter band.
     * 
