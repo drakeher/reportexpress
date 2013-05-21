@@ -21,9 +21,9 @@ the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/3.0/.
 
 If your application can't meet the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
-or is a commercial one (eg: the library is integrated in a software or an appliance you're selling) 
+or is a commercial one (the library is integrated in a software or an appliance you're selling) 
 then you'll have to buy a commercial license.
-Commercial license price are depending of your needs: please contact to yordis.prietp@gmail.com
+Commercial license price are depending of your needs: please contact to yordis.prieto@gmail.com
 
 Disclaimer of Warranty
 ======================
