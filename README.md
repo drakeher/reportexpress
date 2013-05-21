@@ -22,10 +22,10 @@ it in bundled packages as long as your application is also distributed with the 
  I AM NOT RESPONSIBLE FOR, AND EXPRESSLY DISCLAIMS ALL LIABILITY FOR,
  DAMAGES OF ANY KIND ARISING OUT OF REPORTEXPRESS LIBRARY USE.
 
-If your application can''t meet the GPL license or 
+If your application can't meet the GPL license or 
 is a commercial one (eg: the library is integrated in a software or an appliance 
-you''re selling) then you''ll have to buy a commercial license. 
-With this license you don''t need to make publicly available your 
+you're selling) then you'll have to buy a commercial license. 
+With this license you don't need to make publicly available your 
 application code under the GPL license terms.
 
 Commercial license price are depending of your needs: please contact to me.
