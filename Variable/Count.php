@@ -2,34 +2,30 @@
 
 namespace ReportExpress\Variable;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * ReportExpress
- *
- * @package		ReportExpress
- * @subpackage          Variable
- * @author		Sparkle Team
- * @copyright           Copyright (c) 2013, ReportExpress.
- * @license		http://reportexpress.com/license.html
- * @link		http://reportexpress.com
- * @since		Version 1.0
- * @filesource          Count.php
+ * Count Class
+ * 
+ * Used for controlling the Count variables of the report.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Variable
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Count extends Variable {
-
+   
+   /**
+    * {@inheritdoc}
+    */
     public function __construct($data) {
         parent::__construct($data);
     }
 
     /**
-     * Se evalua la variable.
-     * 
-     * @param \ReportExpress\Core\ReportExpress $report El objeto del reporte.
-     * @return void
+     * {@inheritdoc}
      */
     public function evaluate($report) {
         // @TODO esta expresion puede ser mucho mas compleja

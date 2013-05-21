@@ -22,16 +22,16 @@ class Average extends Variable {
     * @var int 
     */
    private $count = 0;
-
+   
+   /**
+    * {@inheritdoc}
+    */
    public function __construct($data) {
       parent::__construct($data);
    }
 
    /**
-    * Evaluates the variable.
-    * 
-    * @param \ReportExpress\ReportExpress $report The report.
-    * @return void
+    * {@inheritdoc}
     */
    public function evaluate($report) {
       // @TODO esta expresion puede ser mucho mas compleja
@@ -59,10 +59,7 @@ class Average extends Variable {
    }
 
    /**
-    * Resets the variable $type if it matches.
-    * 
-    * @param string $type The type to reset.
-    * @return void
+    * {@inheritdoc}
     */
    public function reset($type) {
       if ($this->resetType() == $type) {
@@ -72,9 +69,7 @@ class Average extends Variable {
    }
 
    /**
-    * Return the value of variable.
-    * 
-    * @return mixed The value.
+    * {@inheritdoc}
     */
    public function value() {
       return $this->value == 0 || $this->count == 0 ? 0 : $this->value / $this->count;

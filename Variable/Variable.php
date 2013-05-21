@@ -37,7 +37,7 @@ class Variable {
     /**
      * Constructor of the class
      * 
-     * @param type $data Tha Data of the report.
+     * @param type $data Tha data of the report.
      * @return void
      */
     public function __construct($data) {
