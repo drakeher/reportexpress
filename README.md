@@ -17,7 +17,7 @@ The ReportExpress library is released under two different licenses.
 
 **Do you want to use ReportExpress for a personal or non-profit project?**
 Then you can use ReportExpress for free under 
-the [**Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License**][1]
+the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License][1]
 
 If your application can't meet the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License][1]
 or is a commercial one (the library is integrated in a software or an appliance you're selling) 
