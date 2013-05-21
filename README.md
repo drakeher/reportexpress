@@ -14,7 +14,7 @@ This repo contains in development code for future releases. There may be big cha
 License
 =======
 The ReportExpress library is released under two different licenses. 
-If your application is not a commercial one (eg: you make no money by redistributing it) 
+If your application is not a commercial one (example: you make no money by redistributing it) 
 then the GNU GPLv3 license (General Public License) applies. This license allows you to 
 freely integrate this library in your applications, modify the code and redistribute 
 it in bundled packages as long as your application is also distributed with the GPL license.
