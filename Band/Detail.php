@@ -136,7 +136,6 @@ class Detail extends Band {
     * 
     * @param \ReportExpress\ReportExpress $report The report which is rendered.
     * @param \ReportExpress\Core\Point $point The point where it begins to render.
-    * 
     * @return boolean Return TRUE or FALSE to indicate whether fully 
     * rendered the final groups.
     */

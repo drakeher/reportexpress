@@ -28,6 +28,7 @@ class Loader {
      * de la libreria.
      * 
      * @param type $path The path of labrary.
+     * @return void
      */
     public static function register($path) {
         self::$path = $path;
@@ -38,7 +39,7 @@ class Loader {
      * Find the class within library.
      * 
      * @param string $class The class.
-     * @return boolean It was founded.
+     * @return boolean TRUE It was founded, FALSE otherwise.
      */
     private static function load($class) {
 	$class = str_replace("\\",DIRECTORY_SEPARATOR,$class);

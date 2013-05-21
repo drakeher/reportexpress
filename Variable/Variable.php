@@ -3,80 +3,86 @@
 namespace ReportExpress\Variable;
 
 /**
- * ReportExpress
- *
- * @package		ReportExpress
- * @subpackage          Variable
- * @author		Sparkle Team
- * @copyright           Copyright (c) 2013, ReportExpress.
- * @license		http://reportexpress.com/license.html
- * @link		http://reportexpress.com
- * @since		Version 1.0
- * @filesource          Variable.php
+ * Variable Class
+ * 
+ * Used for controlling the variables of the report.
+ * 
+ * @category    Library
+ * @package     ReportExpress
+ * @subpackage  Variable
+ * @version     1.0 In development. Very unstable.
+ * @author      Yordis Prieto <yordis.prieto@gmail.com>
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
+ * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Variable {
 
     /**
-     *
-     * @var \SimpleXMLElement 
+     * @var \SimpleXMLElement. 
      */
     protected $data = NULL;
 
     /**
-     * Valor de la variable.
+     * Value of the variable.
      * @var mixed 
      */
     protected $value;
 
     /**
-     * Indica si esta variable ya ha sido evaluada para resetType = report
+     * Indicates if Variable has already been evaluated.
      * @var boolean 
      */
     protected $evaluateReport;
-
+    
+    /**
+     * Constructor of the class
+     * 
+     * @param type $data Tha Data of the report.
+     * @return void
+     */
     public function __construct($data) {
         $this->data = $data;
         $this->evaluateReport = FALSE;
     }
 
     /**
-     * Nombre de la variable.
+     * Name of the Variable
      * 
-     * @return string El nombre.
+     * @return string The name.
      */
     public function name() {
         return (string) $this->data['name'];
     }
 
     /**
-     * Devuelve el tipo de calculo que emplea la variable.
+     * Returns the type of calculation that uses the variable.
      * 
-     * @return string Tipo de calculo.
+     * @return string Calculation type.
      */
     public function calculation() {
         return (string) $this->data['calculation'];
     }
 
     /**
-     * Devuelve la expresion que evalua la variable.
+     * Returns the expression that evaluates the variable.
      * 
-     * @return string La expresion.
+     * @return string The expression.
      */
     public function expression() {
         return (string) $this->data->variableExpression;
     }
 
     /**
-     * Tipo de reset que utiliza.
+     * Return the reset type used
      * 
-     * @return string El reset.
+     * @return string The reset type.
      */
     public function resetType() {
         return isset($this->data['resetType']) ? (string) $this->data['resetType'] : 'Report';
     }
 
     /**
-     * Devuelve el valor de la variable.
+     * Return the value of the variable.
      * 
      * @return mixed El valor.
      */
@@ -85,28 +91,29 @@ class Variable {
     }
 
     /**
-     * Permite modificar el valor de la variable.
+     * sets the value of the variable.
      * 
-     * @param mixed $value El nuevo valor.
+     * @param mixed $value The new value.
      */
     public function setVaue($value) {
         $this->value = $value;
     }
 
     /**
-     * Analiza la expresion y reemplaza el valor de value.
+     * Analyzes the expression and replaces the value of value.
      * 
-     * @param \ReportExpress\Core\ReportExpress $report El objeto reporte.
+     * @param \ReportExpress\ReportExpress $report The report.
+     * @return void
      */
     public function evaluate($report) {
         $this->value = $report->analyse($this->expression());
     }
 
     /**
-     * Resetea la variable si coincide con $type.
+     * Resets the variable $type if it matches.
      * 
-     * @param string $type El tipo de reset.
-     * @param string $name El nombre del grupo en caso de que reset sea igual a group.
+     * @param string $type The type of reset.
+     * @param string $name The group's name in case group reset equals.
      * @return void
      */
     public function reset($type, $name = NULL) {

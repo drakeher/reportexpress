@@ -99,6 +99,7 @@ class Property {
      * Constructor of the class.
      * 
      * @param \SimpleXmlElment $xml XML.
+     * @return void
      */
     public function __construct($xml) {
         $this->name = (string) $xml["name"];

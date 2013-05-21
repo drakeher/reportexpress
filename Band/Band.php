@@ -172,6 +172,7 @@ class Band {
     * @param string $component The component type shown (component or after).
     * @param \ReportExpress\ReportExpress $report Where it renders a report.
     * @param \ReportExpress\Core\Point $point The point.
+    * @return void
     */
    public function realRender($component, $report, $point) {
 
