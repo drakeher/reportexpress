@@ -9,7 +9,7 @@ of code required to accomplish desired.
 
 Release Information
 ===================
-This repo contains in development code for future releases.
+This repo contains in development code for future releases. There may be big changes in the future.
 
 License
 =======
