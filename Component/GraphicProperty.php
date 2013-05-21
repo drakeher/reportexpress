@@ -10,9 +10,9 @@ namespace ReportExpress\Component;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Component
- * @version     1.0
+ * @version     1.0 In development. Very unstable.
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
- * @copyright   Copyright (C) 2013, Yordis Prieto.
+ * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 abstract class GraphicProperty extends Component {
