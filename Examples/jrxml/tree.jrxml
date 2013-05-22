@@ -98,10 +98,6 @@
 	</columnHeader>
 	<detail>
 		<band height="130" splitType="Stretch">
-			<image>
-				<reportElement uuid="132621c9-a30f-44b7-be2b-341fd0d50726" x="9" y="4" width="56" height="80"/>
-				<imageExpression><![CDATA["tree2.png"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement uuid="221af274-daf8-40ce-adcc-9c5c203b1d43" positionType="FixRelativeToBottom" x="2" y="126" width="551" height="1"/>
 			</line>

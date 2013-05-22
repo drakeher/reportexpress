@@ -1,6 +1,6 @@
 <?php
 
-namespace ReportExpress\Band;
+namespace Band;
 
 /**
  * Detail Class
@@ -10,7 +10,7 @@ namespace ReportExpress\Band;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Band
- * @version     1.0
+ * @version     1.0 In development. Very unstable.
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -102,8 +102,8 @@ class Detail extends Band {
    /**
     * Render header groups.
     * 
-    * @param \ReportExpress\ReportExpress $report The report which is rendered.
-    * @param \ReportExpress\Point $point The point where it begins to render.
+    * @param \ReportExpress $report The report which is rendered.
+    * @param \Point $point The point where it begins to render.
     * @return boolean Return TRUE or FALSE to indicate whether 
     * the groups are rendered totally header.
     */
@@ -134,8 +134,8 @@ class Detail extends Band {
    /**
     * Render the final groups.
     * 
-    * @param \ReportExpress\ReportExpress $report The report which is rendered.
-    * @param \ReportExpress\Core\Point $point The point where it begins to render.
+    * @param \ReportExpress $report The report which is rendered.
+    * @param \Core\Point $point The point where it begins to render.
     * @return boolean Return TRUE or FALSE to indicate whether fully 
     * rendered the final groups.
     */

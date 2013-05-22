@@ -1,20 +1,19 @@
 <?php
 
-namespace ReportExpress\Band;
+namespace Band;
 
-use ReportExpress\Component\Rectangle,
-    ReportExpress\Component\StaticText,
-    ReportExpress\Component\TextField,
-    ReportExpress\Component\Line,
-    ReportExpress\Component\Image,
-    ReportExpress\Component\Ellipse,
-    ReportExpress\Component\Charts\PieChart,
-    ReportExpress\Component\Charts\BarChart,
-    ReportExpress\Component\Charts\LineChart,
-    ReportExpress\Component\Charts\StakedBarChart,
-    ReportExpress\Component\Charts\AreaChart,
-    ReportExpress\Component\Charts\Pie3DChart;
-
+use Component\Rectangle,
+    Component\StaticText,
+    Component\TextField,
+    Component\Line,
+    Component\Image,
+    Component\Ellipse,
+    Component\Charts\PieChart,
+    Component\Charts\BarChart,
+    Component\Charts\LineChart,
+    Component\Charts\StakedBarChart,
+    Component\Charts\AreaChart,
+    Component\Charts\Pie3DChart;
 
 /**
  * Band Class
@@ -24,207 +23,207 @@ use ReportExpress\Component\Rectangle,
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Band
- * @version     1.0
+ * @version     1.0 In development. Very unstable.
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
  */
 class Band {
 
-   /**
-    * Data from the jrxml band. 
-    * @var \SimpleXMLElement  
-    */
-   protected $data = NULL;
+    /**
+     * Data from the jrxml band. 
+     * @var \SimpleXMLElement  
+     */
+    protected $data = NULL;
 
-   /**
-    * List of components to render. 
-    * @var array 
-    */
-   protected $component = array();
+    /**
+     * List of components to render. 
+     * @var array 
+     */
+    protected $component = array();
 
-   /**
-    * The maximum height of the components.
-    * @var int 
-    */
-   protected $maxy = 0;
+    /**
+     * The maximum height of the components.
+     * @var int 
+     */
+    protected $maxy = 0;
 
-   /**
-    * List of components to render. 
-    * @var array  
-    */
-   protected $after = array();
+    /**
+     * List of components to render. 
+     * @var array  
+     */
+    protected $after = array();
 
-   /**
-    * Constructor of the class.
-    * 
-    * @param \SimpleXMLElement $band Data from the jrxml band.
-    * @return void
-    */
-   public function __construct($band) {
-      $this->data = $band;
-      $this->component = $this->collect($band);
-      $this->solveComponent();
-   }
+    /**
+     * Constructor of the class.
+     * 
+     * @param \SimpleXMLElement $band Data from the jrxml band.
+     * @return void
+     */
+    public function __construct($band) {
+        $this->data = $band;
+        $this->component = $this->collect($band);
+        $this->solveComponent();
+    }
 
-   /**
-    * Collect components containing the band.
-    * 
-    * @param \SimpleXMLElement $band The band to collect.
-    * @return array The list of components collected.
-    */
-   public static function collect($band) {
-      $component = array();
-      foreach ($band->children() as $name => $elem) {
-	 switch ($name) {
-	    case 'rectangle':
-	       $component[] = new Rectangle($elem);
-	       break;
-	    case 'staticText':
-	       $component[] = new StaticText($elem);
-	       break;
-	    case 'textField':
-	       $component[] = new TextField($elem);
-	       break;
-	    case 'line':
-	       $component[] = new Line($elem);
-	       break;
-	    case 'ellipse':
-	       $component[] = new Ellipse($elem);
-	       break;
-	    case 'image':
-	       $component[] = new Image($elem);
-	       break;
-	    case 'pie3DChart':
-	       $component[] = new Pie3DChart($elem->pie3DPlot, $elem->pieDataset, $elem->chart);
-	       break;
-	    case 'pieChart':
-	       $component[] = new PieChart($elem->piePlot, $elem->pieDataset, $elem->chart);
-	       break;
-	    case 'lineChart':
-	       $component[] = new LineChart($elem->linePlot, $elem->categoryDataset, $elem->chart);
-	       break;
-	    case 'barChart':
-	       $component[] = new BarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
-	       break;
-	    case 'stackedBarChart':
-	       $component[] = new StakedBarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
-	       break;
-	    case 'areaChart':
-	       $component[] = new AreaChart($elem->areaPlot, $elem->categoryDataset, $elem->chart);
-	       break;
-	    default:
-	       //no interesa procesar el tag
-	       break;
-	 }
-      }
+    /**
+     * Collect components containing the band.
+     * 
+     * @param \SimpleXMLElement $band The band to collect.
+     * @return array The list of components collected.
+     */
+    public static function collect($band) {
+        $component = array();
+        foreach ($band->children() as $name => $elem) {
+            switch ($name) {
+                case 'rectangle':
+                    $component[] = new Rectangle($elem);
+                    break;
+                case 'staticText':
+                    $component[] = new StaticText($elem);
+                    break;
+                case 'textField':
+                    $component[] = new TextField($elem);
+                    break;
+                case 'line':
+                    $component[] = new Line($elem);
+                    break;
+                case 'ellipse':
+                    $component[] = new Ellipse($elem);
+                    break;
+                case 'image':
+                    $component[] = new Image($elem);
+                    break;
+                case 'pie3DChart':
+                    $component[] = new Pie3DChart($elem->pie3DPlot, $elem->pieDataset, $elem->chart);
+                    break;
+                case 'pieChart':
+                    $component[] = new PieChart($elem->piePlot, $elem->pieDataset, $elem->chart);
+                    break;
+                case 'lineChart':
+                    $component[] = new LineChart($elem->linePlot, $elem->categoryDataset, $elem->chart);
+                    break;
+                case 'barChart':
+                    $component[] = new BarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
+                    break;
+                case 'stackedBarChart':
+                    $component[] = new StakedBarChart($elem->barPlot, $elem->categoryDataset, $elem->chart);
+                    break;
+                case 'areaChart':
+                    $component[] = new AreaChart($elem->areaPlot, $elem->categoryDataset, $elem->chart);
+                    break;
+                default:
+                    //no interesa procesar el tag
+                    break;
+            }
+        }
 
-      return $component;
-   }
+        return $component;
+    }
 
-   /**
-    * Return the height of the band.
-    * 
-    * @return int The Height.
-    */
-   public function height() {
-      return (int) $this->data['height'];
-   }
+    /**
+     * Return the height of the band.
+     * 
+     * @return int The Height.
+     */
+    public function height() {
+        return (int) $this->data['height'];
+    }
 
-   /**
-    * Return the splitType of the band.
-    * 
-    * @return string The splitType.
-    */
-   public function split() {
-      return (string) $this->data['splitType'];
-   }
+    /**
+     * Return the splitType of the band.
+     * 
+     * @return string The splitType.
+     */
+    public function split() {
+        return (string) $this->data['splitType'];
+    }
 
-   /**
-    * Returns the result of the expression in printWhenExpression attribute has 
-    * been modified, otherwise returns TRUE.
-    * 
-    * @param \ReportExpress\ReportExpress $report
-    * @return boolean The result of the expression.
-    */
-   public function printWhenExpression($report) {
-      return isset($this->data->printWhenExpression) ? (boolean) $report->analyse((string) $this->data->printWhenExpression) : TRUE;
-   }
+    /**
+     * Returns the result of the expression in printWhenExpression attribute has 
+     * been modified, otherwise returns TRUE.
+     * 
+     * @param \ReportExpress $report
+     * @return boolean The result of the expression.
+     */
+    public function printWhenExpression($report) {
+        return isset($this->data->printWhenExpression) ? (boolean) $report->analyse((string) $this->data->printWhenExpression) : TRUE;
+    }
 
-   /**
-    * Render the components of the band.
-    * 
-    * @param \ReportExpress\ReportExpress $report The report which is rendered.
-    * @param \ReportExpress\Core\Point $point The point where it begins to render.
-    * @return void
-    */
-   public function render($report, $point) {
-      $this->height = 0;
-      //rendereamos component
-      $this->realRender('component', $report, $point);
-      //redereamos after
-      $this->realRender('after', $report, $point);
-   }
+    /**
+     * Render the components of the band.
+     * 
+     * @param \ReportExpress $report The report which is rendered.
+     * @param \Core\Point $point The point where it begins to render.
+     * @return void
+     */
+    public function render($report, $point) {
+        $this->height = 0;
+        //rendereamos component
+        $this->realRender('component', $report, $point);
+        //redereamos after
+        $this->realRender('after', $report, $point);
+    }
 
-   /**
-    * Manages as shows the components within the band.
-    * 
-    * @param string $component The component type shown (component or after).
-    * @param \ReportExpress\ReportExpress $report Where it renders a report.
-    * @param \ReportExpress\Core\Point $point The point.
-    * @return void
-    */
-   public function realRender($component, $report, $point) {
+    /**
+     * Manages as shows the components within the band.
+     * 
+     * @param string $component The component type shown (component or after).
+     * @param \ReportExpress $report Where it renders a report.
+     * @param \Core\Point $point The point.
+     * @return void
+     */
+    public function realRender($component, $report, $point) {
 
-      foreach ($this->$component as $c) {
+        foreach ($this->$component as $c) {
 
-	 //chequeamos que se pueda imprimir
-	 if ($c->printWhenExpression($report) == FALSE) {
-	    continue;
-	 }
+            //chequeamos que se pueda imprimir
+            if ($c->printWhenExpression($report) == FALSE) {
+                continue;
+            }
 
-	 if ($c->render($report, $point->x, $component == 'component' ? $point->y : (($point->y + $this->height) - $c->height()) - $c->y()) == FALSE) {
-	    //este es el caso en que el componente debe ser rendeareado
-	    //al final de la pagina, asi nos saltamos los pasos siguientes
-	    //y lo mostramos al final.
-	    continue;
-	 }
+            if ($c->render($report, $point->x, $component == 'component' ? $point->y : (($point->y + $this->height) - $c->height()) - $c->y()) == FALSE) {
+                //este es el caso en que el componente debe ser rendeareado
+                //al final de la pagina, asi nos saltamos los pasos siguientes
+                //y lo mostramos al final.
+                continue;
+            }
 
-	 $lastheight = $report->get('pdf')->getY() - $point->y;
+            $lastheight = $report->get('pdf')->getY() - $point->y;
 
-	 if ($lastheight > $this->height) {
-	    $this->height = $lastheight;
-	 }
-      }
-   }
+            if ($lastheight > $this->height) {
+                $this->height = $lastheight;
+            }
+        }
+    }
 
-   /**
-    * Separate components and component after, which determines 
-    * who is to be displayed first.
-    * 
-    * @return void
-    */
-   public function solveComponent() {
+    /**
+     * Separate components and component after, which determines 
+     * who is to be displayed first.
+     * 
+     * @return void
+     */
+    public function solveComponent() {
 
-      $component = array();
+        $component = array();
 
-      foreach ($this->component as $c) {
+        foreach ($this->component as $c) {
 
-	 if ($c->positionType() == 'FixRelativeToBottom') {
-	    $this->after [] = $c;
-	 } else {
-	    $component [] = $c;
-	 }
+            if ($c->positionType() == 'FixRelativeToBottom') {
+                $this->after [] = $c;
+            } else {
+                $component [] = $c;
+            }
 
-	 $nmaxy = $c->y() + $c->height();
+            $nmaxy = $c->y() + $c->height();
 
-	 if ($nmaxy > $this->maxy) {
-	    $this->maxy = $nmaxy;
-	 }
-      }
-      //componentes que se renderean primero
-      $this->component = $component;
-   }
+            if ($nmaxy > $this->maxy) {
+                $this->maxy = $nmaxy;
+            }
+        }
+        //componentes que se renderean primero
+        $this->component = $component;
+    }
 
 }
 

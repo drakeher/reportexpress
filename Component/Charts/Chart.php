@@ -1,11 +1,13 @@
 <?php
 
-namespace ReportExpress\Component\Charts;
+namespace Component\Charts;
 
 require_once(dirname(__FILE__) . '/pChart.php');
 
-use ReportExpress\Component\Component,
-    ReportExpress\Component\Charts\pChart;
+use Component\Component,
+    Component\Charts\pChart;
+
+define('path_to_font', dirname(__DIR__) . '/../');
 
 /**
  * Chart Class
@@ -15,7 +17,7 @@ use ReportExpress\Component\Component,
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Charts
- * @version     1.0
+ * @version     1.0 In development. Very unstable.
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -96,18 +98,18 @@ abstract class Chart extends Component {
     /**
      * Dibuja el titulo de la gráfica.
      * 
-     * @param \ReportExpress\ReportExpress $report The report.
+     * @param \ReportExpress $report The report.
      * @return void
      */
     public function titulo($report) {
         $title = $report->analyse((string) $this->data->chartTitle->titleExpression);
-        
-        $letraSize = isset($this->data->chartTitle->font['size']) ? (float) $this->data->chartTitle->font['size']: 12;
+
+        $letraSize = isset($this->data->chartTitle->font['size']) ? (float) $this->data->chartTitle->font['size'] : 12;
 
         if ($title != '') {
             $tcolor = isset($this->data->chartTitle['color']) ? $this->toColor((string) $this->data->chartTitle['color']) : array(0, 0, 0);
-            $this->charObj->setFontProperties("Vendor/pChart/Fonts/tahoma.ttf", $letraSize);
-            $this->charObj->drawTitle(10, 20, $title, $tcolor[0], $tcolor[1], $tcolor[2]);            
+            $this->charObj->setFontProperties(path_to_font . "Vendor/pChart/Fonts/tahoma.ttf", $letraSize);
+            $this->charObj->drawTitle(10, 20, $title, $tcolor[0], $tcolor[1], $tcolor[2]);
         }
     }
 
@@ -127,7 +129,7 @@ abstract class Chart extends Component {
      */
     public function gradientColor() {
         $color1 = array(110, 100, 10);
-        $color2 = array(50,200, 255);
+        $color2 = array(50, 200, 255);
 
         $this->charObj->createColorGradientPalette($color1[0], $color1[1], $color1[2], $color2[0], $color2[1], $color2[2], 5);
     }
@@ -151,7 +153,7 @@ abstract class Chart extends Component {
             if ($LBcolor)
                 $LBcolor = $this->toColor($LBcolor);
 
-            $this->charObj->setFontProperties("Vendor/pChart/Fonts/tahoma.ttf", 10);
+            $this->charObj->setFontProperties(path_to_font . "Vendor/pChart/Fonts/tahoma.ttf", 10);
             $this->charObj->drawLegend($this->dimencion['width'] - $this->legend_dimencion['width'] + 6, 50, $this->charData->GetDataDescription(), $LBcolor[0] ? $LBcolor[0] : 255, $LBcolor[1] ? $LBcolor[1] : 255, $LBcolor[2] ? $LBcolor[2] : 255, 255, 255, 255, $TLcolor[0] ? $TLcolor[0] : 0, $TLcolor[1] ? $TLcolor[1] : 0, $TLcolor[2] ? $TLcolor[2] : 0);
         }
     }
@@ -162,7 +164,7 @@ abstract class Chart extends Component {
      * @return array --Array['width'] = whidth -- Array['height'] = height --
      */
     public function leyenda_dimencion($pieArray = FALSE) {
-        $legendSize = $this->charObj->getLegendBoxSize($this->charData->GetDataDescription(),$pieArray ? $pieArray : FALSE);
+        $legendSize = $this->charObj->getLegendBoxSize($this->charData->GetDataDescription(), $pieArray ? $pieArray : FALSE);
         return array('width' => $legendSize[0] + 6, 'height' => $legendSize[1] + 6);
     }
 
@@ -179,7 +181,7 @@ abstract class Chart extends Component {
     /**
      * Sets the data to graph.
      * 
-     * @param \ReportExpress\ReportExpress $report The report.
+     * @param \ReportExpress $report The report.
      * @return void
      */
     public function configData($report) {
@@ -229,7 +231,7 @@ abstract class Chart extends Component {
     /**
      * Prepare the image before drawing the graph.
      * 
-     * @param \ReportExpress\ReportExpress $report The Report.
+     * @param \ReportExpress $report The Report.
      * @return void
      */
     public function preRender($report) {
@@ -238,8 +240,8 @@ abstract class Chart extends Component {
 
         $this->charObj = new pChart($this->dimencion['width'], $this->dimencion['heigth']);
 
-        $this->charObj->setFontProperties("Vendor/pChart/Fonts/tahoma.ttf", 10);
-        
+        $this->charObj->setFontProperties(path_to_font . "Vendor/pChart/Fonts/tahoma.ttf", 10);
+
         $this->legend_dimencion = $this->leyenda_dimencion($daraDescription ? $daraDescription : FALSE);
 
         $this->charObj->drawFilledRoundedRectangle(0, 0, $this->dimencion['width'], $this->dimencion['heigth'], 5, 255, 255, 255);
@@ -251,7 +253,7 @@ abstract class Chart extends Component {
      * Prepare the image before drawing the graph. 
      * For bar charts, line, area.
      * 
-     * @param \ReportExpress\ReportExpress $report The report.
+     * @param \ReportExpress $report The report.
      * @param constant $scale [optional] Constant used by pChart to create the scale.
      * @return void
      */
@@ -266,14 +268,14 @@ abstract class Chart extends Component {
         $this->charObj->drawGrid(4, TRUE, 230, 230, 230, 50);
 
         // Draw the 0 line
-        $this->charObj->setFontProperties("Vendor/pChart/Fonts/tahoma.ttf", 8);              
+        $this->charObj->setFontProperties(path_to_font . "Vendor/pChart/Fonts/tahoma.ttf", 8);
         $this->charObj->drawTreshold(0, 143, 55, 72, TRUE, TRUE);
     }
 
-    /**    
+    /**
      * Add the resulting image of the graph to the report.
      * 
-     * @param \ReportExpress\ReportExpress $report The report.
+     * @param \ReportExpress $report The report.
      * @param int $x
      * @param int $y
      * @param \pChart $picture

@@ -36,7 +36,7 @@
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Sparkle Team]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Report Express]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="7895f7b1-36a8-46df-a7eb-17d202ebedce" x="417" y="343" width="133" height="230" forecolor="#666666"/>
@@ -50,7 +50,7 @@
 				<textElement textAlignment="Center">
 					<font size="18" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Diseñado por Ingenieros de Sparkle Team]]></text>
+				<text><![CDATA[Diseñado por Ingenieros de Report Express]]></text>
 			</staticText>
 		</band>
 	</background>
@@ -78,7 +78,7 @@
 				<textElement textAlignment="Center">
 					<font size="15" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Empresa Propietaria: Sparkle Team]]></text>
+				<text><![CDATA[Empresa Propietaria: ReportExpress Team]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -92,7 +92,7 @@
 				<textElement textAlignment="Center">
 					<font size="15" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Sparkle Team]]></text>
+				<text><![CDATA[Report Express]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

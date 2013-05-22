@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="flower" language="groovy" pageWidth="595" pageHeight="842" columnWidth="20" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3c05ae4-57cb-4fa1-9500-da19c40304d8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="PieChartDataset" uuid="a5e60406-4aab-4ac4-9ecb-fd0283c33f3f"/>
 	<queryString>
 		<![CDATA[select * from orders]]>
@@ -55,20 +55,6 @@
 			</band>
 		</groupHeader>
 	</group>
-	<background>
-		<band height="802">
-			<image>
-				<reportElement uuid="1802b356-50c9-438e-bef6-24d4095ef0d5" x="-20" y="65" width="231" height="267"/>
-				<imageExpression><![CDATA["flower.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="8463e9c2-0985-4eb2-acd3-fdad24ba56ab" x="-20" y="-20" width="231" height="267">
-					<printWhenExpression><![CDATA[$evaluate = $V{REPORT_COUNT} == 1 ? FALSE:TRUE;]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA["flower.png"]]></imageExpression>
-			</image>
-		</band>
-	</background>
 	<title>
 		<band height="94" splitType="Stretch">
 			<rectangle>

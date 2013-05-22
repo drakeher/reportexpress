@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="groups" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66b1c8df-fefc-4788-a80e-3f5e806f3c9f">
-	<property name="ireport.callouts" value="##Thu Mar 21 11:29:44 EDT 2013\ncallouts.4.text=Sum of FREIGHT with reset type group Country_First_letter\ncallouts.4.bounds=266,318,150,75\ncallouts.1.text=Use the Sample Database (HSQLDB test) datasource to run this report.\nTo run the database, select Help &gt; Samples &gt; Run Sample Database.\ncallouts.3.pins=559,257;\ncallouts.3.bounds=408,183,159,58\ncallouts.2.text=The evaluation time of this textfield is set to AUTO, to let JasperReports figure it out when the group is going to start. An alternative is to print directly the expression used for the gruop without relay to a variable.\ncallouts.4.pins=559,297;\ncallouts.2.bounds=109,0,209,114\ncallouts.1.bounds=310,15,235,90\ncallouts.3.text=Sum of FREIGHT with reset type group Country\ncallouts.2.pins=105,135;"/>
+	<property name="ireport.callouts" value="##Wed May 22 10:37:04 EDT 2013\ncallouts.4.text=Sum of FREIGHT with reset type group Country_First_letter\ncallouts.4.bounds=266,318,150,75\ncallouts.1.text=Use the Sample Database (HSQLDB test) datasource to run this report.\nTo run the database, select Help &gt; Samples &gt; Run Sample Database.\ncallouts.3.pins=559,257;\ncallouts.3.bounds=408,183,159,58\ncallouts.2.text=The evaluation time of this textfield is set to AUTO, to let JasperReports figure it out when the group is going to start. An alternative is to print directly the expression used for the gruop without relay to a variable.\ncallouts.4.pins=559,297;\ncallouts.2.bounds=15,-9,209,114\ncallouts.1.bounds=423,60,235,90\ncallouts.3.text=Sum of FREIGHT with reset type group Country\ncallouts.2.pins=105,135;"/>
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -137,7 +137,7 @@
 				<textElement textAlignment="Center">
 					<font size="18"/>
 				</textElement>
-				<text><![CDATA[Paises mas consumidores de cafe]]></text>
+				<text><![CDATA[Paises consumidores de cafe]]></text>
 			</staticText>
 		</band>
 	</title>
