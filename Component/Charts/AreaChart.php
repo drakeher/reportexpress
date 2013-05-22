@@ -10,7 +10,7 @@ namespace ReportExpress\Component\Charts;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Charts
- * @version     1.0 In development. Very unstable.
+ * @version     1.0
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
