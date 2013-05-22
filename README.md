@@ -40,4 +40,9 @@ YOU ASSUME ALL RISK ASSOCIATED WITH THE INSTALLATION AND USE OF THE SOFTWARE.
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS OF THE SOFTWARE BE LIABLE FOR CLAIMS, 
 DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE. 
 
+Documentation
+=============
+The documentation is not ready yet. If you have any questions about the library 
+send an email to yordis.prieto@gmail.com
+
 [1]: http://creativecommons.org/licenses/by-nc-sa/3.0/
