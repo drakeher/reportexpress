@@ -1,6 +1,5 @@
-
 #examples > li > div {
-   
+
 }
 #examples > li > div:hover{
    border-color: #0088cc;
@@ -15,7 +14,6 @@
    font-size: 72px;
    line-height: 1;
 }
-
 #examples img {
    border: 1px solid #ddd;
    opacity: .5;
