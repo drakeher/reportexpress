@@ -57,7 +57,6 @@ class Band {
      * Constructor of the class.
      * 
      * @param \SimpleXMLElement $band Data from the jrxml band.
-     * @return void
      */
     public function __construct($band) {
         $this->data = $band;
@@ -142,7 +141,7 @@ class Band {
      * Returns the result of the expression in printWhenExpression attribute has 
      * been modified, otherwise returns TRUE.
      * 
-     * @param \ReportExpress $report
+     * @param \ReportExpress\ReportExpress $report
      * @return boolean The result of the expression.
      */
     public function printWhenExpression($report) {
@@ -199,8 +198,6 @@ class Band {
     /**
      * Separate components and component after, which determines 
      * who is to be displayed first.
-     * 
-     * @return void
      */
     public function solveComponent() {
 

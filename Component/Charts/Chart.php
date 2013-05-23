@@ -2,7 +2,7 @@
 
 namespace ReportExpress\Component\Charts;
 
-require_once(dirname(__FILE__) . '/pChart.php');
+//require_once(dirname(__FILE__) . '/pChart.php');
 
 use ReportExpress\Component\Component,
     ReportExpress\Component\Charts\pChart;
@@ -72,7 +72,6 @@ abstract class Chart extends Component {
      * @param \SimpleXMLElement $plot
      * @param \SimpleXMLElement $dataSet
      * @param \SimpleXMLElement $chart
-     * @return void
      */
     public function __construct($plot, $dataSet, $chart) {
         $this->plot = $plot;
@@ -99,7 +98,6 @@ abstract class Chart extends Component {
      * Dibuja el titulo de la gráfica.
      * 
      * @param \ReportExpress\ReportExpress $report The report.
-     * @return void
      */
     public function titulo($report) {
         $title = $report->analyse((string) $this->data->chartTitle->titleExpression);
@@ -124,8 +122,6 @@ abstract class Chart extends Component {
 
     /**
      * Sets the gradient of colors to be draw the graph.
-     * 
-     * @return void
      */
     public function gradientColor() {
         $color1 = array(110, 100, 10);
@@ -137,8 +133,6 @@ abstract class Chart extends Component {
     /**
      * Draw the chart legend. Default is drawn with 
      * white background and black text.
-     * 
-     * @return void
      */
     public function leyenda() {
         if ($this->isShowLegend()) {
@@ -181,8 +175,7 @@ abstract class Chart extends Component {
     /**
      * Sets the data to graph.
      * 
-     * @param \ReportExpress $report The report.
-     * @return void
+     * @param \ReportExpress\ReportExpress $report The report.
      */
     public function configData($report) {
 
@@ -231,8 +224,7 @@ abstract class Chart extends Component {
     /**
      * Prepare the image before drawing the graph.
      * 
-     * @param \ReportExpress $report The Report.
-     * @return void
+     * @param \ReportExpress\ReportExpress $report The Report.
      */
     public function preRender($report) {
 
@@ -253,9 +245,8 @@ abstract class Chart extends Component {
      * Prepare the image before drawing the graph. 
      * For bar charts, line, area.
      * 
-     * @param \ReportExpress $report The report.
+     * @param \ReportExpress\ReportExpress $report The report.
      * @param constant $scale [optional] Constant used by pChart to create the scale.
-     * @return void
      */
     public function preRenderBarLineArea($scale = SCALE_NORMAL) {
 
@@ -275,7 +266,7 @@ abstract class Chart extends Component {
     /**
      * Add the resulting image of the graph to the report.
      * 
-     * @param \ReportExpress $report The report.
+     * @param \ReportExpress\ReportExpress $report The report.
      * @param int $x
      * @param int $y
      * @param \pChart $picture

@@ -10,7 +10,7 @@ namespace ReportExpress\Component\Charts;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Chart
- * @version     1.0 In development. Very unstable.
+ * @version     1.0
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -36,8 +36,7 @@ class PieChart extends Chart {
    /**
     * Description.
     * 
-    * @param \ReportExpress $report The report.
-    * @return void
+    * @param \ReportExpress\ReportExpress $report The report.
     */
    public function configData($report) {
 
@@ -114,8 +113,6 @@ class PieChart extends Chart {
    /**
     * Draw the legend of Pie type charts. 
     * Default is drawn with white background and black text.
-    * 
-    * @return void
     */
    public function dibujarPieLegend() {
       $this->charObj->drawPieLegend($this->dimencion['width'] - $this->legend_dimencion['width'], 0, $this->charData->GetData(), $this->charData->GetDataDescription(), 250, 250, 250);

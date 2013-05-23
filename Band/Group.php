@@ -144,7 +144,7 @@ class Group {
    /**
     * Return the groupHeader of the group.
     * 
-    * @return \Band\Band The groupHeader band.
+    * @return \ReportExpress\Band\Band The groupHeader band.
     */
    public function header() {
       return $this->groupHeader;
@@ -174,7 +174,6 @@ class Group {
     * 
     * @param string $name The name of group.
     * @param mixed $value The new value.
-    * @return void
     */
    public function setValue($name, $value) {
       $this->value[$name] = $value;

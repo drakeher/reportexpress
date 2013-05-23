@@ -4,9 +4,9 @@ namespace ReportExpress;
 require_once(dirname(__FILE__) . '/Vendor/tcpdf/tcpdf.php');
 
 use ReportExpress\Component\DataSet,
-    ReportExpress\Variable\Variable,
     ReportExpress\Core\Property,
     ReportExpress\Core\Point,
+    ReportExpress\Variable\Variable,
     ReportExpress\Variable\Sum,
     ReportExpress\Variable\Average,
     ReportExpress\Variable\Count,
@@ -194,7 +194,6 @@ class ReportExpress {
      * @param string $prop Name of attribute.
      * @param mixed $value The value of the attribute.
      * @param string $name [optional] The name of the attribute property.
-     * @return void 
      */
     public function set($prop, $value, $name = NULL) {
         $prop = &$this->$prop;
@@ -206,7 +205,6 @@ class ReportExpress {
      *  
      * @param string $path Path to the report.
      * @param string $ext [optional] Extention of the report.
-     * @return void
      */
     public function setConfig($path, $ext = 'jrxml') {
         $this->path = $path;
@@ -219,7 +217,6 @@ class ReportExpress {
      * @param string $name Filename
      * @param array $data Data of report.
      * @param array $parameters [optional] Parameters of report.
-     * @return void 
      */
     public function load($name, $data, $parameters = NULL) {
         //se carga el xml
@@ -247,7 +244,6 @@ class ReportExpress {
      * Initializes the parameters that apply to the report.
      * 
      * @param array $parameters The parameters to be collected.
-     * @return void 
      */
     public function collectParameters($parameters) {
         foreach ($this->xml->parameter as $value) {
@@ -294,7 +290,6 @@ class ReportExpress {
      * 
      * @param string $name Dataset name.
      * @param array $data Dataset data.
-     * @return void
      */
     public function addDataset($name, $data) {
         $this->dataset [$name] = new DataSet($name, $data);
@@ -302,8 +297,6 @@ class ReportExpress {
 
     /**
      * Parse the xml getting different parts of the report.
-     * 
-     * @return void
      */
     public function parser() {
 
@@ -358,8 +351,6 @@ class ReportExpress {
 
     /**
      * Build the report.
-     * 
-     * @return void
      */
     public function build() {
 
@@ -444,8 +435,6 @@ class ReportExpress {
 
     /**
      * Determine the positions of each band on the current page.
-     * 
-     * @return void
      */
     public function calculatedPositionBands() {
 
@@ -521,8 +510,6 @@ class ReportExpress {
     /**
      * Render the components that are left for last, because it contained 
      * variables that were dependent on a final value in page.
-     * 
-     * @return void
      */
     public function evaluationTime() {
 
@@ -549,8 +536,6 @@ class ReportExpress {
 
     /**
      * Evaluate all variables.
-     * 
-     * @return void
      */
     public function evaluationVariable() {
         foreach ($this->variables as $var) {
@@ -646,7 +631,6 @@ class ReportExpress {
      * 
      * @param string $method Indicates how the report is displayed.
      * @param string $path [optional] Indicates where the report is saved.
-     * @return void
      */
     public function show($method = 'I', $path = NULL) {
 
@@ -674,10 +658,8 @@ class ReportExpress {
      * @param string $type The type <ul><li>Group</li><li>Report</li><li>page</li><li>None</li><li>Column</li></ul>.
      * @param string $name [optional] Just in case that $type is Group, here 
      * indicates the group name.
-     * @return void
      */
     public function resetVariables($type, $name = NULL) {
-
         foreach ($this->variables as $var) {
             $var->reset($type, $name);
         }
@@ -694,8 +676,6 @@ class ReportExpress {
 
     /**
      * Index increases by one.
-     * 
-     * @return void
      */
     public function next() {
         $this->ownvariables['REPORT_COUNT']++;
@@ -712,8 +692,6 @@ class ReportExpress {
 
     /**
      * Render the title band.
-     * 
-     * @return void
      */
     public function renderTitle() {
         if ($this->title) {
@@ -723,8 +701,6 @@ class ReportExpress {
 
     /**
      * Render the PageHeader band.
-     * 
-     * @return void
      */
     public function renderPageHeader() {
         if ($this->pageheader) {
@@ -745,8 +721,6 @@ class ReportExpress {
 
     /**
      * Render the ColumnFooter band.
-     * 
-     * @return void
      */
     public function renderColumnFooter() {
         if ($this->columnfooter) {
@@ -756,8 +730,6 @@ class ReportExpress {
 
     /**
      * Render the PageFooter band.
-     * 
-     * @return void
      */
     public function renderPageFooter() {
         if ($this->pagefooter) {
@@ -767,8 +739,6 @@ class ReportExpress {
 
     /**
      * Create a page in the pdf and run a recurring logic in each creation.
-     * 
-     * @return void
      */
     public function createPage() {
         //evaluamos los componentes que faltan antes de crear una nueva pagina
@@ -790,8 +760,6 @@ class ReportExpress {
 
     /**
      * Renders matching bands on the end and the beginning of a page.
-     * 
-     * @return void
      */
     public function newPage() {
         $this->renderColumnFooter();
