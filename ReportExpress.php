@@ -206,7 +206,7 @@ class ReportExpress {
      * @param string $path Path to the report.
      * @param string $ext [optional] Extention of the report.
      */
-    public function setConfig($path, $ext = 'jrxml') {
+    public function setConfig($path, $ext = 'jrxml') { 
         $this->path = $path;
         $this->ext = $ext;
     }
@@ -220,7 +220,7 @@ class ReportExpress {
      */
     public function load($name, $data, $parameters = NULL) {
         //se carga el xml
-        $this->xml = simplexml_load_file("$this->path$name.$this->ext");
+        $this->xml = simplexml_load_file("$this->path/$name.$this->ext");
 
         //se actualizan los datos a mostrar
         $this->values = $data;

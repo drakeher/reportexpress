@@ -2,7 +2,7 @@
 
 namespace ReportExpress\Component\Charts;
 
-//require_once(dirname(__FILE__) . '/pChart.php');
+require_once(dirname(__FILE__) . '/pChart.php');
 
 use ReportExpress\Component\Component,
     ReportExpress\Component\Charts\pChart;

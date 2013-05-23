@@ -5,8 +5,9 @@
  */
 require_once '../Core/Loader.php';
 
-use ReportExpress\Core\Loader, 
+use ReportExpress\Core\Loader,
     ReportExpress\ReportExpress;
+
 
 /**
  * Carga de namespace
@@ -16,7 +17,7 @@ use ReportExpress\Core\Loader,
 /**
  * Se registra la direccion a la libreria.
  */
-Loader::register(realpath(__DIR__.'/../../'));
+Loader::register(realpath(__DIR__ . '/../../'));
 
 /**
  * Datos de prueba, que pueden ser los resultantes de una consulta o un codigo especifico.
@@ -41,16 +42,28 @@ $report->setConfig('jrxml/');
  */
 $name = $_GET['name'];
 
-if ($name == 'report1' || $name == 'report2' || $name == 'report3' || $name == 'report4' || $name == 'report5' || $name == 'report6' || $name == 'report12') {
-    $report->setConfig('jrxml/chart/');
-    $report->addDataset('New Dataset 1', array(array('anno' => 2000, 'enero' => 10, 'febrero' => 12, 'marzo' => 12, 'abril' => 1), array('anno' => 2001, 'enero' => 1, 'febrero' => 6, 'marzo' => 1, 'abril' => 3), array('anno' => 2002, 'enero' => 12, 'febrero' => 4, 'marzo' => 6, 'abril' => 6), array('anno' => 2003, 'enero' => 4, 'febrero' => 2, 'marzo' => 5, 'abril' => 9)));
-    $report->load($name, $chartdata);
-} else if ($name == 'parameters_variables') {
-    $params = array('Country' => 'Germany', 'BetterStuf' => 'xxx12');
-    $report->load($name, $bulkdata, $params);
-} else {
+$path = realpath(__DIR__ . '/jrxml/chart/');
 
-    $report->load($name, $bulkdata);
+switch ($name) {
+   case "report1":
+   case "report2":
+   case "report3":
+   case "report4":
+   case "report5":
+   case "report6":
+   case "report12":
+      $report->setConfig($path);
+      $report->addDataset('New Dataset 1', array(array('anno' => 2000, 'enero' => 10, 'febrero' => 12, 'marzo' => 12, 'abril' => 1), array('anno' => 2001, 'enero' => 1, 'febrero' => 6, 'marzo' => 1, 'abril' => 3), array('anno' => 2002, 'enero' => 12, 'febrero' => 4, 'marzo' => 6, 'abril' => 6), array('anno' => 2003, 'enero' => 4, 'febrero' => 2, 'marzo' => 5, 'abril' => 9)));
+      $report->load($name, $chartdata);
+      break;
+   case "parameters_variables":
+      $params = array('Country' => 'Germany', 'BetterStuf' => 'xxx12');
+      $report->load($name, $bulkdata, $params);
+      break;
+   default:
+      $report->load($name, $bulkdata);
+      break;
 }
+
 $report->show();
 ?>
