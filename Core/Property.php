@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace ReportExpress\Core;
 
 /**
  * Property Class

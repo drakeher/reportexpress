@@ -1,6 +1,6 @@
 <?php
 
-namespace Component\Charts;
+namespace ReportExpress\Component\Charts;
 
 /**
  * Pie3DChart Class

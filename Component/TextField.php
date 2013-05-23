@@ -1,8 +1,8 @@
 <?php
 
-namespace Component;
+namespace ReportExpress\Component;
 
-use Core\Point;
+use ReportExpress\Core\Point;
 
 
 /**
@@ -13,7 +13,7 @@ use Core\Point;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Component
- * @version     1.0 In development. Very unstable.
+ * @version     1.0
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -196,7 +196,7 @@ class TextField extends TextProperty {
    /**
     * It evaluates the content to display in the textfield.
     * 
-    * @param \ReportExpress $report The report.
+    * @param \ReportExpress\ReportExpress $report The report.
     * @return string The text to display.
     */
    public function text($report) {

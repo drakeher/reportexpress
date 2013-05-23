@@ -1,6 +1,6 @@
 <?php
 
-namespace Component\Charts;
+namespace ReportExpress\Component\Charts;
 
 require_once(dirname(__FILE__) . '/../../Vendor/pChart/pChart/pData.class');
 require_once(dirname(__FILE__) . '/../../Vendor/pChart/pChart/pChart.class');

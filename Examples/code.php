@@ -3,17 +3,20 @@
 /**
  * Clase encargada de la auto-carga de clases en la libreria.
  */
-require '../Core/Loader.php';
+require_once '../Core/Loader.php';
+
+use ReportExpress\Core\Loader, 
+	ReportExpress\ReportExpress;
 
 /**
  * Carga de namespace
  */
-use Core\Loader;
+//use Core\Loader;
 
 /**
  * Se registra la direccion a la libreria.
  */
-Loader::register(dirname(__DIR__));
+Loader::register(realpath(__DIR__.'/../../'));
 
 /**
  * Datos de prueba, que pueden ser los resultantes de una consulta o un codigo especifico.

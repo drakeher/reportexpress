@@ -1,17 +1,18 @@
 <?php
+namespace ReportExpress;
 
 require_once(dirname(__FILE__) . '/Vendor/tcpdf/tcpdf.php');
 
-use Component\DataSet,
-    Variable\Variable,
-    Core\Property,
-    Core\Point,
-    Variable\Sum,
-    Variable\Average,
-    Variable\Count,
-    Band\Band,
-    Band\Detail,
-    Band\Group;
+use ReportExpress\Component\DataSet,
+    ReportExpress\Variable\Variable,
+    ReportExpress\Core\Property,
+    ReportExpress\Core\Point,
+    ReportExpress\Variable\Sum,
+    ReportExpress\Variable\Average,
+    ReportExpress\Variable\Count,
+    ReportExpress\Band\Band,
+    ReportExpress\Band\Detail,
+    ReportExpress\Band\Group;
 
 /**
  * ReportExpress Class
@@ -20,7 +21,7 @@ use Component\DataSet,
  * 
  * @category    Library
  * @package     ReportExpress
- * @version     1.0 In development. Very unstable.
+ * @version     1.0
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -47,61 +48,61 @@ class ReportExpress {
 
     /**
      * Properties of report. 
-     * @var \Core\Property 
+     * @var \ReportExpress\Core\Property 
      */
     private $property;
 
     /**
      * Background band. 
-     * @var \Band\Band 
+     * @var \ReportExpress\Band\Band 
      */
     private $background = NULL;
 
     /**
      * Title band. 
-     * @var \Band\Band  
+     * @var \ReportExpress\Band\Band  
      */
     private $title = NULL;
 
     /**
      * PageHeader band. 
-     * @var \Band\Band 
+     * @var \ReportExpress\Band\Band 
      */
     private $pageheader = NULL;
 
     /**
      * ColumnHeader band. 
-     * @var \Band\Band 
+     * @var \ReportExpress\Band\Band 
      */
     private $columnheader = NULL;
 
     /**
      * Detail band. 
-     * @var \Band\Band  
+     * @var \ReportExpress\Band\Band  
      */
     private $detail = NULL;
 
     /**
      * ColumnFooter band. 
-     * @var \Band\Band  
+     * @var \ReportExpress\Band\Band  
      */
     private $columnfooter = NULL;
 
     /**
      * PageFooter band. 
-     * @var \Band\Band  
+     * @var \ReportExpress\Band\Band  
      */
     private $pagefooter = NULL;
 
     /**
      * Summary band. 
-     * @var \Band\Band 
+     * @var \ReportExpress\Band\Band 
      */
     private $summary = NULL;
 
     /**
      * List of groups. 
-     * @var Band\Group  
+     * @var \ReportExpress\Band\Group  
      */
     private $groups = array();
 
@@ -161,7 +162,7 @@ class ReportExpress {
 
     /**
      * List dataset used in the report. 
-     * @var \Component\DataSet  
+     * @var \ReportExpress\Component\DataSet  
      */
     private $dataset = array();
 

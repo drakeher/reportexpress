@@ -1,6 +1,5 @@
 <?php
-
-namespace Core;
+namespace ReportExpress\Core;
 
 /**
  * Loader Class
@@ -10,7 +9,7 @@ namespace Core;
  * @category    Library
  * @package     ReportExpress
  * @subpackage  Core
- * @version     1.0 In development. Very unstable.
+ * @version     1.0
  * @author      Yordis Prieto <yordis.prieto@gmail.com>
  * @copyright   Creative Commons (CC) 2013, Yordis Prieto.
  * @license     http://creativecommons.org/licenses/by-nc-sa/3.0/ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
@@ -42,9 +41,9 @@ class Loader {
      * @return boolean TRUE It was founded, FALSE otherwise.
      */
     private static function load($class) {
-	$class = str_replace("\\",DIRECTORY_SEPARATOR,$class);
-        if (file_exists(self::$path . DIRECTORY_SEPARATOR . $class . ".php")) {
-            require self::$path . DIRECTORY_SEPARATOR . $class . ".php";
+		$class = str_replace('\\',DIRECTORY_SEPARATOR,$class);
+        if (file_exists(self::$path . DIRECTORY_SEPARATOR . $class . '.php')) {
+            require self::$path . DIRECTORY_SEPARATOR . $class . '.php';
             return true;
         }
     }

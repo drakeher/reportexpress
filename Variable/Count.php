@@ -1,6 +1,6 @@
 <?php
 
-namespace Variable;
+namespace ReportExpress\Variable;
 
 /**
  * Count Class

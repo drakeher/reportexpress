@@ -1,6 +1,5 @@
 <?php
-
-namespace Core;
+namespace ReportExpress\Core;
 
 /**
  * Point Class
