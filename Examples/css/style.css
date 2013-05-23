@@ -1,10 +1,13 @@
-/* 
-    Document   : style
-    Created on : May 22, 2013, 7:33:44 PM
-    Author     : Yordis Prieto
-    Description:
-        Purpose of the stylesheet follows.
-*/
+
+#examples > li > div {
+   
+}
+#examples > li > div:hover{
+   border-color: #0088cc;
+}
+#examples > li > div:hover img {
+   opacity: 1;
+}
 .title {
    text-align: center;
 }
@@ -14,6 +17,8 @@
 }
 
 #examples img {
+   border: 1px solid #ddd;
+   opacity: .5;
    width: 100%;
    height: 200px;
 }
