@@ -5,14 +5,12 @@
  */
 require_once '../Core/Loader.php';
 
-use ReportExpress\Core\Loader,
-    ReportExpress\ReportExpress;
-
-
 /**
  * Carga de namespace
  */
-//use Core\Loader;
+use ReportExpress\Core\Loader,
+    ReportExpress\ReportExpress;
+
 
 /**
  * Se registra la direccion a la libreria.
@@ -42,8 +40,6 @@ $report->setConfig('jrxml/');
  */
 $name = $_GET['name'];
 
-$path = realpath(__DIR__ . '/jrxml/chart/');
-
 switch ($name) {
    case "report1":
    case "report2":
@@ -52,7 +48,7 @@ switch ($name) {
    case "report5":
    case "report6":
    case "report12":
-      $report->setConfig($path);
+      $report->setConfig(realpath(__DIR__ . '/jrxml/chart/'));
       $report->addDataset('New Dataset 1', array(array('anno' => 2000, 'enero' => 10, 'febrero' => 12, 'marzo' => 12, 'abril' => 1), array('anno' => 2001, 'enero' => 1, 'febrero' => 6, 'marzo' => 1, 'abril' => 3), array('anno' => 2002, 'enero' => 12, 'febrero' => 4, 'marzo' => 6, 'abril' => 6), array('anno' => 2003, 'enero' => 4, 'febrero' => 2, 'marzo' => 5, 'abril' => 9)));
       $report->load($name, $chartdata);
       break;
