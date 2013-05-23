@@ -153,6 +153,7 @@ abstract class TextProperty extends Component {
 
    /**
     * Returns the side to which to rotate.
+    * 
     * @return string The side.
     */
    public function rotate() {

@@ -6,7 +6,7 @@
 require_once '../Core/Loader.php';
 
 use ReportExpress\Core\Loader, 
-	ReportExpress\ReportExpress;
+    ReportExpress\ReportExpress;
 
 /**
  * Carga de namespace
