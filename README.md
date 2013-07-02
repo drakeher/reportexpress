@@ -43,6 +43,8 @@ DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTW
 Documentation
 =============
 The documentation is not ready yet. If you have any questions about the library 
-send an email to yordis.prieto@gmail.com
+send an email to yordis.prieto@gmail.com. If you download the ***.zip*** you have 
+to ***rename the folder*** to ReportExpress because when you download the library 
+folder called reportexpress-master.
 
 [1]: http://creativecommons.org/licenses/by-nc-sa/3.0/
