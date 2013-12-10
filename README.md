@@ -48,3 +48,4 @@ to ***rename the folder*** to ReportExpress because when you download the librar
 folder called reportexpress-master.
 
 [1]: http://creativecommons.org/licenses/by-nc-sa/3.0/
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6da64580dc232d8e5b7c6552645fc9c7 "githalytics.com")](http://githalytics.com/yordis/reportexpress)
